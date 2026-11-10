@@ -1,11 +1,1624 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAYOUNG SHIN | Content Marketer Portfolio</title>
+<meta name="description" content="콘텐츠로 사람과 브랜드를 연결하는 콘텐츠 마케터 신하영의 포트폴리오. AI 광고, 방송 예고편, 유튜브 콘텐츠 기획·제작 작업을 소개합니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="신하영 | 콘텐츠 마케터 포트폴리오">
+<meta property="og:description" content="AI 광고, 방송 예고편, 유튜브 콘텐츠까지. 기획부터 제작까지 직접 하는 콘텐츠 마케터 신하영의 작업물입니다.">
+<!-- TODO(배포 전): 아래 '실제-사이트주소' 두 곳(og:image, og:url)을 실제 도메인으로 바꾸세요. og-image.jpg 는 1200x630 권장 -->
+<meta property="og:image" content="https://실제-사이트주소/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://실제-사이트주소">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Gowun+Dodum&display=swap">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+  /* =====================================================
+     이미지 파일 위치 (index.html 과 같은 폴더의 images 폴더)
+       images/camera.png      카메라 (화면 빈 것)
+       images/film-frame.png  1칸 필름 프레임
+       images/bg-clouds.png   (선택) 픽셀 구름 배경
+       images/donghaeng.png, images/alice.png   동행 / 앨리스 썸네일·포스터 (한글 파일명은 서버에서 404 날 수 있어 영문 사용)
+       images/thumb1.jpg ~ thumb12.jpg   썸네일 (유튜브 영상은 자동으로 바뀜)
+       videos/donghaeng-ai.mp4, videos/alice.mp4, videos/intro.mp4   mp4 영상 파일
+       audio/bgm.mp3          배경음악 (없으면 같은 폴더의 bgbgm.mp4 를 대신 재생)
+       유튜브 영상은 Works 의 iframe data-link="" 에 링크 붙여넣기
+     ===================================================== */
+
+  :root {
+    --header-bg: #ffe9c6;
+    --bg: #f4eadb;
+    --ink: #3a3029;
+    --accent: #a8714a;
+    --rec: #c8483c;
+    --pop: rgb(255, 184, 52);   /* NOW PLAYING 아이콘 색 */
+    --font-pixel: 'Silkscreen', 'Gowun Dodum', sans-serif;
+    --font-body: 'Gowun Dodum', sans-serif;
+    --header-h: 72px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+  /* 스크롤바 숨기기 (스크롤은 그대로 됨). 다시 보이게 하려면 아래 블록을 지우세요 */
+  html { scrollbar-width: none; -ms-overflow-style: none; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+  /* 팝업 스크롤바는 숨기고, 아래 SCROLL 표시(.scroll-hint)로 대신 안내 */
+  .modal-body { scrollbar-width: none; -ms-overflow-style: none; }
+  .modal-body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+  /* ---------- SCROLL ▼ 표시 (팝업 아래에 더 볼 내용이 있을 때만 보임) ---------- */
+  .scroll-hint {
+    position: absolute; left: 50%; bottom: 14px; z-index: 3; display: flex; align-items: center; gap: 10px;
+    padding: 6px 14px; background: var(--ink); color: var(--header-bg); pointer-events: none;
+    font-family: var(--font-pixel); font-size: .8125rem; letter-spacing: .16em; line-height: 1.2;
+    box-shadow: 0 -3px 0 0 var(--ink), 0 3px 0 0 var(--ink), -3px 0 0 0 var(--ink), 3px 0 0 0 var(--ink), 6px 6px 0 3px rgba(58, 48, 41, .28);
+    opacity: 0; transform: translate(-50%, 6px); transition: opacity .25s ease, transform .25s ease;
+  }
+  .scroll-hint.show { opacity: 1; transform: translate(-50%, 0); }
+  .scroll-hint i {   /* 픽셀 아래 화살표 */
+    display: block; width: 12px; height: 9px; background: var(--pop, #ffd27a);
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 83% 33%, 83% 55%, 66% 55%, 66% 78%, 50% 78%, 50% 100%, 50% 100%, 50% 78%, 33% 78%, 33% 55%, 16% 55%, 16% 33%, 0 33%);
+  }
+  @keyframes hint-bob { 50% { transform: translateY(3px); } }
+  @media (prefers-reduced-motion: no-preference) { .scroll-hint.show i { animation: hint-bob .9s steps(3, end) infinite; } }
+  @media (prefers-reduced-motion: reduce) { .scroll-hint { transition: none; } }
+  @media (max-width: 480px) { .scroll-hint { bottom: 10px; font-size: .6875rem; padding: 5px 10px; } }
+  body {
+    font-family: var(--font-body); font-weight: 300; color: var(--ink);
+    background: var(--bg);
+    word-break: keep-all; overflow-wrap: break-word; overflow-x: clip;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+  }
+  a { color: inherit; text-decoration: none; }
+  input[type="radio"] { position: fixed; top: 0; left: 0;   /* fixed: 라벨 클릭 시 브라우저가 이 숨은 버튼으로 스크롤하지 않게 */
+     width: 1px; height: 1px; padding: 0;margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0);white-space: nowrap;border: 0;}         
+    
+  /* 체크박스/라디오는 화면에 안 보이게 */
+
+  /* ---------- 이미지 태그 공통 ---------- */
+  .bg-clouds { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; pointer-events: none; }
+  .camera .frame, .film .bg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+  .inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (hover: hover) { .film:hover .inner img { transform: scale(1.05); transition: transform .3s; } }
+
+  /* ---------- 헤더 ---------- */
+  .header { position: sticky; top: 0; z-index: 50; height: var(--header-h); background: var(--header-bg); }
+  .header .wrap { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+  .logo { font-family: var(--font-pixel); font-size: 1.625rem; letter-spacing: .12em; }
+  .menu { display: flex; gap: 8px; }
+  .menu a {
+    font-family: var(--font-pixel); font-size: 1.125rem; letter-spacing: .12em;
+    padding: 6px 14px; border: 2px solid transparent; border-radius: 12px; transition: border-color .2s;
+  }
+  .menu a { position: relative; }
+  .menu a::after { content: ''; position: absolute; inset: -12px -3px; }   /* 터치 영역 확대 (보이지 않음) */
+  .menu a:hover, .menu a.active { border-color: var(--ink); }
+
+  /* ---------- 공통 ---------- */
+  .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+  .page { position: relative; padding: 72px 0; }
+  .pixel-title { font-family: var(--font-pixel); font-size: 1.375rem; letter-spacing: .14em; margin-bottom: 14px; }
+  .spark { position: absolute; color: var(--accent); font-size: 1.25rem; animation: twinkle 3.2s ease-in-out infinite; pointer-events: none; }
+  @keyframes twinkle { 0%,100% { opacity: .25; transform: scale(.8); } 50% { opacity: .9; transform: scale(1.1); } }
+
+  /* =====================================================
+     HOME : 인트로 (카메라 뷰파인더 컨셉)
+     ===================================================== */
+  #home { min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h)); display: flex; align-items: center; overflow: hidden; }
+
+  .viewfinder {
+    position: relative; aspect-ratio: 16 / 9;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  /* 3분할 구도선 */
+  .viewfinder::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    --g: rgba(58,48,41,.16);
+    background:
+      linear-gradient(to right, transparent 33.2%, var(--g) 33.2%, var(--g) 33.4%, transparent 33.4%, transparent 66.6%, var(--g) 66.6%, var(--g) 66.8%, transparent 66.8%),
+      linear-gradient(to bottom, transparent 33.2%, var(--g) 33.2%, var(--g) 33.5%, transparent 33.5%, transparent 66.5%, var(--g) 66.5%, var(--g) 66.8%, transparent 66.8%);
+    animation: fade-in .8s ease .9s both;
+  }
+  /* 모서리 괄호: 초점이 맞춰지듯 바깥에서 안으로 */
+  .vf-corner { position: absolute; width: 46px; height: 46px; border: 4px solid var(--ink); animation: lock .7s steps(5) .15s both; }
+  .vf-corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; --x: -28px; --y: -28px; }
+  .vf-corner.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; --x: 28px; --y: -28px; }
+  .vf-corner.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; --x: -28px; --y: 28px; }
+  .vf-corner.br { bottom: 0; right: 0; border-left: 0; border-top: 0; --x: 28px; --y: 28px; }
+  @keyframes lock { from { transform: translate(var(--x), var(--y)); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+  .vf-top, .vf-bottom {
+    position: absolute; left: 36px; right: 36px; display: flex; justify-content: space-between;
+    font-family: var(--font-pixel); font-size: 1rem; letter-spacing: .14em; animation: fade-in .6s ease .6s both;
+  }
+  .vf-top { top: 24px; }
+  .vf-bottom { bottom: 24px; }
+  .rec::before { content: ''; display: inline-block; width: .7em; height: .7em; margin-right: .6em; background: var(--rec); animation: blink 1.1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .vf-center { position: relative; padding: 0 24px; }
+  .hero-kicker { display: block; font-family: var(--font-pixel); font-size: 1rem; letter-spacing: .4em; color: var(--accent); margin-bottom: 18px; animation: rise .6s ease .5s both; }
+  .hero-title { font-family: var(--font-pixel); font-weight: 700; font-size: clamp(2.25rem, 7vw, 5rem); letter-spacing: .08em; line-height: 1.2; }
+  .typed-wrap { position: relative; display: inline-block; }
+  .typed-wrap .ghost { visibility: hidden; }
+  .typed { position: absolute; left: 0; top: 0; white-space: nowrap; }
+  .typed::after { content: ''; display: inline-block; width: .1em; height: .85em; margin-left: .08em; background: var(--ink); vertical-align: -.05em; animation: blink .8s step-end infinite; }
+  .hero-sub { display: block; margin-top: 18px; font-size: 1.25rem; line-height: 1.7; animation: rise .6s ease 2s both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  /* 뷰파인더 배경 */
+  .vf-bg { position: absolute; inset: 0; overflow: hidden; z-index: 0; animation: fade-in .8s ease .3s both; }
+  .vf-photo {
+    position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; transform: scale(1.07);
+    transition: opacity 1.2s ease, transform 5s ease-out;
+  }
+  .vf-photo.on { opacity: 1; transform: scale(1); }
+  /* 글자가 잘 보이도록 가운데는 베이지 막을 진하게, 가장자리는 사진이 더 보이게 */
+  .vf-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(244,234,219,.86) 0%, rgba(244,234,219,.62) 55%, rgba(244,234,219,.3) 100%);
+  }
+  .vf-video {position: absolute;inset: 0;width: 100%;height: 100%;object-fit: cover;}
+
+  @media (prefers-reduced-motion: reduce) {
+    .viewfinder::before, .vf-corner, .vf-top, .vf-bottom, .hero-kicker, .hero-sub, .vf-bg { animation: none; }
+    .rec::before, .typed::after, .spark { animation: none; }
+    .vf-photo, .vf-photo.on { transition: none; transform: none; }}
+
+      /* =====================================================
+      마우스 커서 (픽셀풍 · 짙은 갈색 #3a3029, 밝은 테두리)
+      ===================================================== */
+     :root {
+    --cur-arrow: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2222%22 height=%2230%22 viewBox=%220 0 22 30%22 shape-rendering=%22crispEdges%22%3E%3Crect x=%220%22 y=%220%22 width=%226%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%222%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%224%22 y=%222%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%224%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%224%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%228%22 y=%226%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%228%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2210%22 y=%228%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2210%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%2210%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2212%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2214%22 y=%2212%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2214%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2216%22 y=%2214%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2216%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2218%22 y=%2216%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2218%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%2218%22 width=%228%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2220%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%2220%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2214%22 y=%2220%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2222%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%224%22 y=%2222%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2214%22 y=%2222%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2224%22 width=%2210%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2216%22 y=%2224%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%228%22 y=%2226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2216%22 y=%2226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%228%22 y=%2228%22 width=%2210%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%222%22 y=%222%22 width=%222%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%224%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%226%22 width=%226%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%228%22 width=%228%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2210%22 width=%2210%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2212%22 width=%2212%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2214%22 width=%2214%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2216%22 width=%2216%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2218%22 width=%2210%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2220%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2220%22 width=%226%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2222%22 width=%222%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2222%22 width=%226%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%2210%22 y=%2224%22 width=%226%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%2210%22 y=%2226%22 width=%226%22 height=%222%22 fill=%22%233a3029%22/%3E%3C/svg%3E") 2 2, auto;
+    --cur-hand: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2226%22 height=%2230%22 viewBox=%220 0 26 30%22 shape-rendering=%22crispEdges%22%3E%3Crect x=%226%22 y=%220%22 width=%228%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%222%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%222%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%224%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%224%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%228%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%228%22 width=%226%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%2210%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2216%22 y=%2210%22 width=%226%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%224%22 y=%2212%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2220%22 y=%2212%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2214%22 width=%226%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2222%22 y=%2214%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2216%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2224%22 y=%2216%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2218%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2224%22 y=%2218%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%222%22 y=%2220%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2224%22 y=%2220%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%222%22 y=%2222%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2222%22 y=%2222%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%224%22 y=%2224%22 width=%224%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2222%22 y=%2224%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%2226%22 width=%222%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%2218%22 y=%2226%22 width=%226%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%2228%22 width=%2214%22 height=%222%22 fill=%22%23fff3df%22/%3E%3Crect x=%228%22 y=%222%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%224%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%226%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%228%22 width=%224%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2210%22 width=%228%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2212%22 width=%2212%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%226%22 y=%2214%22 width=%2216%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%222%22 y=%2216%22 width=%2222%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%224%22 y=%2218%22 width=%2220%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%224%22 y=%2220%22 width=%2220%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%226%22 y=%2222%22 width=%2216%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2224%22 width=%2214%22 height=%222%22 fill=%22%233a3029%22/%3E%3Crect x=%228%22 y=%2226%22 width=%2210%22 height=%222%22 fill=%22%233a3029%22/%3E%3C/svg%3E") 9 3, pointer;
+    --cur-play: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2218%22 height=%2227%22 viewBox=%220 0 18 27%22 shape-rendering=%22crispEdges%22%3E%3Crect x=%220%22 y=%220%22 width=%229%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%223%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%223%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%226%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%229%22 y=%226%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%229%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%229%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2212%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%2215%22 y=%2212%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2215%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%2212%22 y=%2215%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2218%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%229%22 y=%2218%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2221%22 width=%223%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%226%22 y=%2221%22 width=%226%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%220%22 y=%2224%22 width=%229%22 height=%223%22 fill=%22%23fff3df%22/%3E%3Crect x=%223%22 y=%223%22 width=%223%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%226%22 width=%226%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%229%22 width=%229%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%2212%22 width=%2212%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%2215%22 width=%229%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%2218%22 width=%226%22 height=%223%22 fill=%22%233a3029%22/%3E%3Crect x=%223%22 y=%2221%22 width=%223%22 height=%223%22 fill=%22%233a3029%22/%3E%3C/svg%3E") 9 13, pointer;
+  }
+  html, body { cursor: var(--cur-arrow); }
+  a, button, label[for], .close, .backdrop, .arrow { cursor: var(--cur-hand); }
+  label.film, label.slot { cursor: var(--cur-play); }
+  /* =====================================================
+     WORKS : 왼쪽 카메라(비디오 플레이어) + 오른쪽 작품 목록
+     ===================================================== */
+
+ 
+  #works { padding-top: 24px; }
+  /* 위: 카메라(왼쪽) + 설명(오른쪽) / 아래: 카테고리별 가로 플레이리스트 */
+  .works-top { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 32px;   /* 카메라 : 설명창 비율 — 앞 숫자를 키우면 카메라가 커져요 */ align-items: center; }
+
+  .camera { position: relative; aspect-ratio: 1680 / 935; }
+  /* 카메라 LCD 화면 위치 — 어긋나면 이 숫자만 조정 */
+  .screen {
+    display: none; position: absolute; left: 11.8%; top: 23.5%; width: 70%; height: 64.7%;
+    background: #f1e8d6 center / cover no-repeat; overflow: hidden;
+  }
+  .screen video { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: contain; background: transparent; }
+  .screen iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+  /* 동행(w1) · 앨리스(w2): 영상이 16:9 라서, 카메라 프레임을 영상 비율에 맞게 세로로 살짝 늘림
+     (LCD 화면 70% x 64.7% 가 정확히 16:9 가 되는 값. 1680 / 1022 의 뒷숫자를 바꾸면 영상 비율이 달라질 때 맞출 수 있어요)
+     다른 영상(유튜브)은 원래 카메라 비율 그대로예요. */
+  #w1:checked ~ .works-layout .camera,
+  #w2:checked ~ .works-layout .camera { aspect-ratio: 1680 / 1022; }
+  .screen.s1, .screen.s2 { background: #000; }
+
+  /* 선택한 영상 설명 박스 — 픽셀 윈도우 디자인 */
+  /* 모서리가 계단처럼 깎인 테두리 (box-shadow 로 그림). 두께를 바꾸려면 6px 을 모두 같은 값으로 */
+  .detail {
+    position: relative; margin: 6px; padding: 0; background: #d6c5a9;
+    box-shadow: 0 -6px 0 0 #5a4f43, 0 6px 0 0 #5a4f43, -6px 0 0 0 #5a4f43, 6px 0 0 0 #5a4f43;
+    filter: drop-shadow(8px 8px 0 rgba(90, 79, 67, .28));     /* 픽셀 그림자. 필요 없으면 이 줄을 지우세요 */
+  }
+  /* 윈도우 제목줄: NOW PLAYING */
+  .np-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--ink); color: var(--header-bg); padding: 10px 18px;
+    font-family: var(--font-pixel); font-size: 1rem; letter-spacing: .2em;
+  }
+  .np-dots { width: 8px; height: 8px; margin-right: 30px; background: var(--header-bg);   /* 오른쪽 픽셀 점 3개 */
+    box-shadow: 14px 0 0 var(--header-bg), 28px 0 0 var(--header-bg); }
+
+  /* ② PLAYING ▶ 깜빡이는 재생 아이콘 */
+  .playing::after {   /* 픽셀 느낌의 재생(▶) 아이콘이 깜빡여요. 깜빡임을 없애려면 animation 줄을 지우세요 */
+    content: ''; display: inline-block; width: .46em; height: .8em; margin-left: .45em; vertical-align: -.02em;
+    background: var(--pop);
+    clip-path: polygon(0 0, 25% 0, 25% 14.29%, 50% 14.29%, 50% 28.57%, 75% 28.57%, 75% 42.86%, 100% 42.86%, 100% 57.14%, 75% 57.14%, 75% 71.43%, 50% 71.43%, 50% 85.71%, 25% 85.71%, 25% 100%, 0 100%);
+    animation: blink 1s step-end infinite;
+  }
+
+  .detail .d { display: none; padding: 22px 26px 26px; }
+  .detail .m-title { font-size: 1.5rem; line-height: 1.35; }
+  .m-title { display: block; font-size: 1.5rem; font-weight: 500; padding-bottom: 14px; }
+  /* 제목 아래 픽셀 점선 */
+  .m-title::after { content: ''; display: block; height: 4px; margin-top: 14px;
+    background: repeating-linear-gradient(90deg, #5a4f43 0 4px, transparent 4px 8px); }
+  .m-desc { display: block; font-size: 1rem; line-height: 1.8; margin-top: 4px; }
+  .m-meta { display: block; font-size: 1rem; line-height: 2; margin-top: 10px; }
+  /* ROLE / TOOL 라벨: 픽셀 태그 */
+  .m-meta b { display: inline-block; font-family: var(--font-pixel); font-weight: 400; font-size: .8125rem; letter-spacing: .1em;
+    margin-right: 10px; padding: 0 8px; line-height: 1.6; background: #5a4f43; color: var(--header-bg); }
+  /* 기획서 링크: 픽셀 버튼 */
+  .m-link { display: inline-block; margin: 17px 0 3px 3px; padding: 6px 16px; font-family: var(--font-pixel); font-size: 1rem; letter-spacing: .1em;
+    background: var(--ink); color: var(--header-bg);
+    box-shadow: 0 -3px 0 0 var(--ink), 0 3px 0 0 var(--ink), -3px 0 0 0 var(--ink), 3px 0 0 0 var(--ink); }
+  .m-link:hover { background: var(--accent); box-shadow: 0 -3px 0 0 var(--accent), 0 3px 0 0 var(--accent), -3px 0 0 0 var(--accent), 3px 0 0 0 var(--accent); color: var(--header-bg); }
+
+  /* TOOL 로고: 이름 대신 로고 이미지로 바뀜 (images/logos/ 폴더). 이미지가 없으면 글자 그대로 보여요 */
+  .tool-logo { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: 0 8px 0 0; vertical-align: middle;
+    background: var(--header-bg);
+    box-shadow: 0 -3px 0 0 #5a4f43, 0 3px 0 0 #5a4f43, -3px 0 0 0 #5a4f43, 3px 0 0 0 #5a4f43; }
+  .tool-logo img { width: 30px; height: 30px; object-fit: contain; display: block; }
+  .tools { display: inline-block; vertical-align: middle; margin-left: 3px; }
+
+  /* 오른쪽 목록 */
+  /* 아래 플레이리스트: 카테고리마다 가로 한 줄 — 필름이 계속 흘러감 (마우스를 올리면 멈춤) */
+  .category { margin-top: 40px; }
+  .row { position: relative; padding: 0 46px; }
+  .cards { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; }      /* JS 가 안 돌 때를 위한 기본 모양 */
+  .cards::-webkit-scrollbar { display: none; }
+  .pl-item { flex: 0 0 260px; }
+  .cards.flow {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+  .track { display: flex; gap: 14px; width: max-content; will-change: transform; }   /* 움직임은 JS 가 처리 */
+  /* 좌우 화살표: 누르면 한 화면씩 넘어가고, 잠시 멈췄다가 다시 흐름 */
+  button { font: inherit; color: inherit; }
+  .arrow {
+    position: absolute; top: 50%; width: 34px; height: 46px; margin-top: -40px; z-index: 5;
+    background: var(--ink); border: 0; padding: 0; appearance: none; -webkit-appearance: none; transition: opacity .2s;
+  }
+  .arrow::after { content: ''; position: absolute; background: var(--bg); }
+  .arrow.prev { left: 0; clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+  .arrow.next { right: 0; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .arrow.prev::after { inset: 11px 7px 11px 13px; clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+  .arrow.next::after { inset: 11px 13px 11px 7px; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .arrow:hover { opacity: .65; }
+  @media (prefers-reduced-motion: reduce) { .cards { scrollbar-width: thin; } }
+  .film { display: block; position: relative; aspect-ratio: 1672 / 935; }
+  /* 필름 1칸 안쪽 영역 */
+  .inner {
+    position: absolute; inset: 7.7% 2.1% 7.8% 2.1%; border-radius: 10px; overflow: hidden;
+    background: #f1e8d6; display: flex; align-items: center; justify-content: center;
+  }
+  .hint { position: relative; z-index: 1; font-size: 0.9375rem; padding: 4px 10px; background: rgba(255,233,198,.92); border-radius: 8px; opacity: 0; transition: opacity .2s; }
+  .film:hover .hint, .film:focus-visible .hint { opacity: 1; }
+  .film:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .cap { display: block; margin-top: 6px; font-size: 0.9375rem; line-height: 1.4; }
+  .soon, .soon + .cap { cursor: var(--cur-arrow); }
+  .soon-text { font-family: var(--font-pixel); font-size: 0.875rem; letter-spacing: .12em; color: var(--accent); }
+
+  /* 라디오로 영상 바꾸기 (w1~w10): 카메라 화면 + 설명 + 목록 강조 */
+  #w1:checked ~ .works-layout .s1, #w1:checked ~ .works-layout .d1,
+  #w2:checked ~ .works-layout .s2, #w2:checked ~ .works-layout .d2,
+  #w4:checked ~ .works-layout .s4, #w4:checked ~ .works-layout .d4,
+  #w5:checked ~ .works-layout .s5, #w5:checked ~ .works-layout .d5,
+  #w6:checked ~ .works-layout .s6, #w6:checked ~ .works-layout .d6,
+  #w7:checked ~ .works-layout .s7, #w7:checked ~ .works-layout .d7,
+  #w8:checked ~ .works-layout .s8, #w8:checked ~ .works-layout .d8,
+  #w9:checked ~ .works-layout .s9, #w9:checked ~ .works-layout .d9,
+  #w10:checked ~ .works-layout .s10, #w10:checked ~ .works-layout .d10 { display: block; }
+  #w1:checked ~ .works-layout .t1 .inner, #w2:checked ~ .works-layout .t2 .inner,
+  #w4:checked ~ .works-layout .t4 .inner, #w5:checked ~ .works-layout .t5 .inner,
+  #w6:checked ~ .works-layout .t6 .inner, #w7:checked ~ .works-layout .t7 .inner,
+  #w8:checked ~ .works-layout .t8 .inner, #w9:checked ~ .works-layout .t9 .inner,
+  #w10:checked ~ .works-layout .t10 .inner { outline: 4px solid var(--accent); outline-offset: -4px; }
+
+  /* ---------- 기획서 요약 카드 (팝업 아래) ----------
+     영상 번호와 같은 plan숫자가 보여요: plan1 = 동행, plan2 = 앨리스
+     새 작품에 카드를 달 때는 아래 두 줄에 #w숫자 / plan숫자 를 추가하세요 */
+  .plan { display: none; margin-top: 38px; }
+  #w1:checked ~ .works-layout .plan1,
+  #w2:checked ~ .works-layout .plan2 { display: block; }
+  .plan-title { font-family: var(--font-pixel); font-size: 1.125rem; letter-spacing: .14em; margin-bottom: 20px; }
+  .plan-title::after { content: ''; display: block; height: 4px; margin-top: 12px;
+    background: repeating-linear-gradient(90deg, #5a4f43 0 4px, transparent 4px 8px); }
+  .plan-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .pcard { position: relative; margin: 4px; background: var(--header-bg);
+    box-shadow: 0 -4px 0 0 #5a4f43, 0 4px 0 0 #5a4f43, -4px 0 0 0 #5a4f43, 4px 0 0 0 #5a4f43; }
+  .pcard.wide { grid-column: 1 / -1; }
+  .pcard h4 { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px;
+    background: var(--ink); color: var(--header-bg);
+    font-family: var(--font-pixel); font-weight: 400; font-size: .875rem; letter-spacing: .18em; }
+  .pcard h4::after { content: ''; width: 6px; height: 6px; margin-right: 20px; background: var(--header-bg);
+    box-shadow: 10px 0 0 var(--header-bg), 20px 0 0 var(--header-bg); }
+  .pc-body { padding: 16px 18px 20px; font-size: .9375rem; line-height: 1.8; }
+  .pc-quote { font-size: 1.0625rem; font-weight: 500; line-height: 1.7; }
+  .pc-chips span { display: inline-block; margin: 12px 6px 0 0; padding: 0 8px; line-height: 1.7;
+    background: #5a4f43; color: var(--header-bg); font-family: var(--font-pixel); font-size: .8125rem; letter-spacing: .06em; }
+  .pc-sep { height: 4px; margin: 14px 0 12px; background: repeating-linear-gradient(90deg, #5a4f43 0 4px, transparent 4px 8px); }
+  .pc-line { display: block; margin-top: 4px; }
+  .pc-line b, .pc-point b { display: inline-block; margin-right: 10px; padding: 0 8px; line-height: 1.6;
+    background: #5a4f43; color: var(--header-bg); font-family: var(--font-pixel); font-weight: 400; font-size: .8125rem; letter-spacing: .1em; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; padding-left: 3px; }
+  .sw { width: 24px; height: 24px; margin: 3px;
+    box-shadow: 0 -3px 0 0 #5a4f43, 0 3px 0 0 #5a4f43, -3px 0 0 0 #5a4f43, 3px 0 0 0 #5a4f43; }
+  .steps { list-style: none; display: grid; gap: 16px; }
+  .steps.n8 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .steps.n5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .steps li { margin: 3px; padding: 10px 12px 12px; background: var(--bg);
+    box-shadow: 0 -3px 0 0 #5a4f43, 0 3px 0 0 #5a4f43, -3px 0 0 0 #5a4f43, 3px 0 0 0 #5a4f43; }
+  .steps .no { display: block; font-family: var(--font-pixel); font-size: .8125rem; letter-spacing: .1em; color: var(--accent); }
+  .steps .nm { display: block; margin-top: 2px; font-size: 1rem; font-weight: 500; line-height: 1.4; }
+  .steps .ds { display: block; margin-top: 4px; font-size: .875rem; line-height: 1.5; }
+  .pc-point { margin-top: 18px; }
+  @media (min-width: 1280px) {
+    .steps.n8 { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 14px; }
+    .steps .nm { font-size: .9375rem; }
+    .pc-body { font-size: 1rem; }
+  }
+  @media (max-width: 820px) {
+    .plan-grid { grid-template-columns: 1fr; gap: 22px; }
+    .steps.n8, .steps.n5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  /* ---------- 배경음악 버튼 (오른쪽 아래 고정) ----------
+     음악 파일: audio/bgm.mp3 (없으면 bgbgm.mp4 로 대체)  (소리 크기는 아래 스크립트의 VOL_CAP 으로 조절) */
+  .bgm-box { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: flex; align-items: center; gap: 18px; }
+  .bgm-btn { position: relative; display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border: 0; background: var(--header-bg); color: var(--ink);
+    font-family: var(--font-pixel); font-size: .875rem; letter-spacing: .14em; line-height: 1.2;
+    box-shadow: 0 -4px 0 0 #5a4f43, 0 4px 0 0 #5a4f43, -4px 0 0 0 #5a4f43, 4px 0 0 0 #5a4f43, 8px 8px 0 4px rgba(90, 79, 67, .28); }
+  .bgm-btn:hover { background: #fff3df; }
+  .bgm-btn.on { background: var(--ink); color: var(--header-bg);
+    box-shadow: 0 -4px 0 0 var(--ink), 0 4px 0 0 var(--ink), -4px 0 0 0 var(--ink), 4px 0 0 0 var(--ink), 8px 8px 0 4px rgba(90, 79, 67, .28); }
+  .bgm-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 8px; }
+  .eq { display: flex; align-items: flex-end; gap: 2px; width: 14px; height: 14px; }
+  .eq i { flex: 1; height: 30%; background: currentColor; }
+  .bgm-btn.live .eq i { animation: eq .9s steps(4) infinite; }
+  .bgm-btn.live .eq i:nth-child(2) { animation-delay: -.3s; }
+  .bgm-btn.live .eq i:nth-child(3) { animation-delay: -.6s; }
+  @keyframes eq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .bgm-btn.live .eq i { animation: none; height: 70%; } }
+  @media (max-width: 820px) { .bgm-box { right: 12px; bottom: 12px; gap: 12px; } .bgm-btn { padding: 6px 10px; font-size: .75rem; } }
+
+  /* 볼륨 조절 (음악이 켜져 있을 때만 버튼 왼쪽에 나타남) */
+  .bgm-vol { display: none; align-items: center; gap: 10px; padding: 8px 12px; background: var(--header-bg);
+    font-family: var(--font-pixel); font-size: .75rem; letter-spacing: .12em; line-height: 1.2;
+    box-shadow: 0 -4px 0 0 #5a4f43, 0 4px 0 0 #5a4f43, -4px 0 0 0 #5a4f43, 4px 0 0 0 #5a4f43, 8px 8px 0 4px rgba(90, 79, 67, .28); }
+  .bgm-box.on:not(.no-vol) .bgm-vol { display: flex; }   /* iOS 처럼 볼륨을 못 바꾸는 기기에서는 슬라이더 숨김 */
+  input.bgm-vol-range { display: block; -webkit-appearance: none; appearance: none; width: 110px; height: 18px; margin: 0; background: transparent; cursor: var(--cur-hand); }
+  input.bgm-vol-range::-webkit-slider-runnable-track { height: 6px; background: linear-gradient(to right, var(--accent) var(--v, 50%), #d6c5a9 var(--v, 50%));
+    box-shadow: 0 -2px 0 0 #5a4f43, 0 2px 0 0 #5a4f43, -2px 0 0 0 #5a4f43, 2px 0 0 0 #5a4f43; }
+  input.bgm-vol-range::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 16px; margin-top: -5px; border: 0; border-radius: 0; background: var(--ink); }
+  input.bgm-vol-range::-moz-range-track { height: 6px; background: linear-gradient(to right, var(--accent) var(--v, 50%), #d6c5a9 var(--v, 50%));
+    box-shadow: 0 -2px 0 0 #5a4f43, 0 2px 0 0 #5a4f43, -2px 0 0 0 #5a4f43, 2px 0 0 0 #5a4f43; }
+  input.bgm-vol-range::-moz-range-thumb { width: 10px; height: 16px; border: 0; border-radius: 0; background: var(--ink); }
+  input.bgm-vol-range:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
+  @media (max-width: 820px) { .bgm-vol { padding: 6px 10px; gap: 8px; } .bgm-vol-lbl { display: none; } input.bgm-vol-range { width: 76px; } }
+
+  /* 더 많은 작업 보기 링크 */
+  .more-works { display: block; width: fit-content; margin: 40px auto 0; font-family: var(--font-pixel); font-size: 1.25rem; letter-spacing: .12em; border-bottom: 2px solid var(--accent); }
+  .more-works:hover { color: var(--accent); }
+
+  /* ---------- ABOUT ---------- */
+  #about { text-align: center; scroll-margin-top: -35px; }
+  .intro { display: block; font-size: clamp(1.125rem, 3.4vw, 2rem); line-height: 2; margin-bottom: 56px; text-align: center; }
+  .skills { display: inline-block; text-align: left; font-family: var(--font-pixel); }
+  .skills .head { display: block; font-size: 1.5rem; letter-spacing: .14em; margin-bottom: 10px; text-align: center; }
+  .skills .item { display: block; font-size: 1.25rem; letter-spacing: .1em; line-height: 2.1; text-align: center; }
+  .skills .item::before { content: '◦  '; }
+  /* CORE SKILL 의 프로그램 로고 줄 (위 TOOL 로고와 같은 방식 — 크기는 width/height 로 조절) */
+  .skills .item.logos::before { content: none; }
+  .skills .item.logos { margin-top: 8px; line-height: 1; }
+  .skills .item.logos .tool-logo { width: 40px; height: 40px; margin: 0 9px; }
+  .skills .item.logos .tool-logo img { width: 40px; height: 40px; }
+  .resume {display: block; margin-top: 32px; font-family: var(--font-pixel);
+  font-size: 1.5rem;letter-spacing: .12em; text-align: right;color: rgb(255, 60, 0); animation: textBlink 1.5s step-end infinite;}
+
+  /* 깜빡임 효과 */
+  @keyframes textBlink {50% {opacity: 0;}}
+
+  /* 마우스를 올리면 깜빡임 정지 */
+  .resume:hover { animation: none; opacity: 1;color: var(--accent);}
+  @media (prefers-reduced-motion: reduce) {.resume {animation: none;}}
+  /* ---------- ABOUT 캐릭터 (왼쪽 캐릭터 + 오른쪽 소개) ----------
+     이미지 파일: images/character.png / 크기는 .about-char 의 height 로 조절 */
+  .about-body { display: flex; align-items: center; justify-content: center; gap: clamp(32px, 7vw, 110px);}
+  .about-char { flex: 0 0 auto; height: clamp(300px, 40vw, 460px); max-width: 100%; width: auto; display: block; animation: char-bob 5s steps(2) infinite; }
+  @keyframes char-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @media (prefers-reduced-motion: reduce) { .about-char { animation: none; } }
+  @media (max-width: 820px) {.about-body { flex-direction: column; gap: 28px; }
+    .about-char { height: 300px; }}
+
+  /* ---------- 푸터 ---------- */
+  .footer { background: var(--header-bg); padding: 28px 0; }
+  .footer .wrap { text-align: center; font-size: clamp(1rem, 3.6vw, 1.3rem); line-height: 2; }
+  .contact a { overflow-wrap: anywhere; }
+  .contact>#email:hover {color: var(--accent);}
+  .contact>#insta:hover {color: var(--accent);}
+
+ /* ---------- 작품 팝업 (카메라 + 설명) ---------- */
+.works-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  /* 노치·홈 바가 있는 폰에서도 팝업이 가려지지 않게 */
+  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  overscroll-behavior: contain;}
+
+.works-modal.open { display: flex; }
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 48, 41, .72);
+  animation: fade-in .25s ease both;}
+
+/* 픽셀 윈도우 */
+.modal-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  /* 팝업 가로폭 */
+  width: min(1440px, 100%);
+  max-height: 100%;   /* 화면보다 길면 팝업 안에서만 스크롤 */
+
+  background: var(--bg);
+
+  /* 픽셀 격자 배경 */
+  background-image:
+    linear-gradient(rgba(168,113,74,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,113,74,.07) 1px, transparent 1px);
+
+  background-size: 24px 24px;
+
+  /* 픽셀 테두리 */
+  box-shadow:
+    0 -8px 0 0 var(--ink),
+    0 8px 0 0 var(--ink),
+    -8px 0 0 0 var(--ink),
+    8px 8px 0 0 var(--ink),
+    0 -8px 0 0 var(--ink),
+    16px 16px 0 8px rgba(58, 48, 41, .35);
+
+  animation: modal-in .38s cubic-bezier(.22, .9, .3, 1) both;}
+
+  @keyframes modal-in { from { opacity: 0; transform: translateY(28px) scale(.95); } to { opacity: 1; transform: none; } }
+  @keyframes sheet-in { from { opacity: 0; transform: translateY(56px); } to { opacity: 1; transform: none; } }
+  @keyframes pop-left { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+  @keyframes pop-right { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+  @keyframes pop-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes swap-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes pixel-in { 0% { opacity: 0; transform: scale(.6); } 60% { opacity: 1; transform: scale(1.12); } 100% { opacity: 1; transform: none; } }
+
+  /* ---------- 팝업 안쪽 요소: 화면 크기에 따라 들어오는 방향이 달라지는 순차 등장 ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    /* 넓은 화면: 카메라는 왼쪽에서, 설명창은 오른쪽에서 */
+    .works-modal.open .camera { animation: pop-left .5s cubic-bezier(.22, .9, .3, 1) .12s both; }
+    .works-modal.open .detail { animation: pop-right .5s cubic-bezier(.22, .9, .3, 1) .22s both; }
+    .works-modal.open .plan   { animation: pop-up .5s cubic-bezier(.22, .9, .3, 1) .38s both; }
+    .works-modal.open .close  { animation: pixel-in .4s steps(5, end) .3s both; }
+    /* 작품을 바꾸면 설명 글이 살짝 떠오름 */
+    .works-modal.open .detail .d { animation: swap-in .35s ease-out both; }
+    .works-modal.open .detail .d > * { animation: swap-in .4s ease-out both; }
+    .works-modal.open .detail .d > :nth-child(2) { animation-delay: .06s; }
+    .works-modal.open .detail .d > :nth-child(3) { animation-delay: .12s; }
+    .works-modal.open .detail .d > :nth-child(4) { animation-delay: .18s; }
+    /* 기획서 카드: 한 장씩 */
+    .works-modal.open .plan .pcard { animation: pop-up .45s cubic-bezier(.22, .9, .3, 1) both; }
+    .works-modal.open .plan .pcard:nth-child(1) { animation-delay: .45s; }
+    .works-modal.open .plan .pcard:nth-child(2) { animation-delay: .52s; }
+    .works-modal.open .plan .pcard:nth-child(3) { animation-delay: .59s; }
+    .works-modal.open .plan .pcard:nth-child(n+4) { animation-delay: .66s; }
+    .close { transition: transform .15s steps(3, end); }
+    .close:hover { transform: rotate(90deg); }
+    .close:active { transform: scale(.88); }
+
+    /* 태블릿·폰(세로로 쌓이는 화면): 아래에서 위로 올라오는 시트 형태, 안쪽 요소도 위로 */
+    @media (max-width: 1024px) {
+      .works-modal.open .camera { animation-name: pop-up; }
+      .works-modal.open .detail { animation-name: pop-up; animation-delay: .2s; }
+    }
+    @media (max-width: 820px) {
+      .modal-panel { animation-name: sheet-in; animation-duration: .42s; }
+      .backdrop { animation-duration: .35s; }
+    }
+  }
+  .modal-body { min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 54px 36px 38px; }
+  .close {
+    position: absolute; top: 14px; right: 16px; z-index: 2; width: 30px; height: 30px; padding: 0; border: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-pixel); font-size: 1rem; line-height: 1; color: var(--header-bg); background: var(--ink);
+    box-shadow: 0 -3px 0 0 var(--ink), 0 3px 0 0 var(--ink), -3px 0 0 0 var(--ink), 3px 0 0 0 var(--ink);
+  }
+  .close:hover { background: var(--accent); box-shadow: 0 -3px 0 0 var(--accent), 0 3px 0 0 var(--accent), -3px 0 0 0 var(--accent), 3px 0 0 0 var(--accent); }
+  body.modal-open { overflow: hidden; }
+
+  /* 닫기 버튼: 터치 화면에서는 누르기 편하게 크게 */
+  @media (pointer: coarse) {
+    .close { width: 40px; height: 40px; top: 12px; right: 14px; font-size: 1.125rem; }
+  }
+
+  /* 태블릿 (~1333px) */
+  @media (max-width: 1333px) {
+    .works-modal { padding: 16px; }
+    .modal-panel { width: 100%; }
+    .modal-body { padding: 50px 20px 24px; }
+  }
+
+  /* 태블릿 세로 / 큰 폰 (~820px): 테두리·그림자를 줄여 화면을 더 넓게 */
+  @media (max-width: 820px) {
+    .works-modal { padding: 14px; }
+    .modal-panel { box-shadow: 0 -6px 0 0 var(--ink), 0 6px 0 0 var(--ink), -6px 0 0 0 var(--ink), 6px 0 0 0 var(--ink), 10px 10px 0 4px rgba(58, 48, 41, .3); }
+    .modal-body { padding: 52px 16px 22px; }
+    .np-bar { padding: 8px 14px; font-size: .875rem; letter-spacing: .14em; }
+    .detail .d { padding: 18px 18px 22px; }
+    .detail .m-title, .m-desc, .m-meta { overflow-wrap: anywhere; word-break: keep-all; }
+    .m-link { padding: 8px 18px; }
+  }
+
+  /* 폰 (~480px) */
+  @media (max-width: 480px) {
+    .works-modal { padding: 10px; }
+    .modal-panel { box-shadow: 0 -4px 0 0 var(--ink), 0 4px 0 0 var(--ink), -4px 0 0 0 var(--ink), 4px 0 0 0 var(--ink), 6px 6px 0 3px rgba(58, 48, 41, .3); }
+    .modal-body { padding: 50px 12px 18px; }
+    .np-bar { padding: 7px 12px; font-size: .75rem; letter-spacing: .1em; }
+    .np-dots { margin-right: 22px; }
+    .detail { margin: 4px; }
+    .m-meta b { margin-right: 6px; padding: 0 6px; font-size: .75rem; }
+    .m-meta { line-height: 2.1; }
+    .tool-logo { width: 26px; height: 26px; }
+    .tool-logo img { width: 26px; height: 26px; }
+  }
+
+  /* 폰 가로 모드 등 화면 높이가 낮을 때: 위아래 여백 최소화 */
+  @media (max-height: 520px) {
+    .works-modal { padding: 8px; }
+    .close { top: 8px; right: 10px; }
+  }
+
+/* 애니메이션 최소화 설정 */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .modal-panel,
+  .works-modal .camera, .works-modal .detail, .works-modal .detail .d,
+  .works-modal .detail .d > *, .works-modal .plan, .works-modal .pcard, .works-modal .close {
+    animation: none !important;}}
+
+  /* ---------- 스크롤 등장 모션 ---------- */
+  /* 처음엔 살짝 아래에서 투명하게 대기 → 화면에 들어오면 .is-in 이 붙으면서 떠오름 */
+  .js :where(.category, .more-works, #about .wrap > *, .footer .wrap) {
+    opacity: 0; transform: translateY(64px) scale(.96);
+    transition: opacity .6s ease, transform .75s cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .js .is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js :where(.category, .more-works, #about .wrap > *, .footer .wrap) { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- 모바일 ---------- */
+  @media (max-width: 820px) {
+    :root { --header-h: 60px; }
+    .logo { font-size: 1.125rem; }
+    .menu a { font-size: 0.875rem; padding: 4px 8px; }
+    .page { padding: 48px 0; }
+    .vf-top, .vf-bottom { left: 22px; right: 22px; font-size: 0.8125rem; }
+    .vf-corner { width: 30px; height: 30px; }
+    .viewfinder { aspect-ratio: auto; min-height: 420px; padding: 64px 0; }
+    .hero-title { font-size: clamp(1.5rem, 6.4vw, 2.75rem); }
+    .hero-sub { font-size: clamp(1rem, 3vw, 1.25rem); }
+    .works-top { grid-template-columns: 1fr; gap: 24px; }
+    .pl-item { flex-basis: 170px; }
+    .row { padding: 0 30px; }
+    .arrow { width: 22px; height: 32px; margin-top: -30px; }
+    .arrow::after { display: none; }
+    .intro { font-size: 1rem; }
+    .skills .item { font-size: 0.8125rem; } }
+    
+
+  /* 아주 작은 폰(~480px): 헤더·인트로가 한 줄에 들어가도록 */
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .logo { font-size: .8125rem; letter-spacing: .06em; }
+    .menu { gap: 0; }
+    .menu a { font-size: .6875rem; letter-spacing: .08em; padding: 3px 4px; border-radius: 8px; }
+    .hero-kicker { font-size: .75rem; letter-spacing: .25em; }
+    .vf-top, .vf-bottom { font-size: .6875rem; letter-spacing: .08em; }
+  }
+
+  /* ---------- 태블릿 (~1024px): 팝업을 한 줄로 쌓고, 목록·글자 크기 조정 ---------- */
+  @media (max-width: 1024px) {
+    .works-top { grid-template-columns: 1fr; gap: 24px; }
+    .camera { width: min(100%, 760px); margin: 0 auto; }
+    .detail { width: min(100% - 12px, 760px); margin-inline: auto; }
+    .pl-item { flex-basis: 220px; }
+    .skills .head { font-size: 1.375rem; }
+    .skills .item { font-size: 1.125rem; }
+  }
+
+  /* ---------- 작은 폰 추가 보정 ---------- */
+  @media (max-width: 480px) {
+    .pl-item { flex-basis: 150px; }
+    .detail .m-title { font-size: 1.25rem; }
+    .detail .d { padding: 18px 16px 22px; }
+    .m-desc, .m-meta { font-size: .9375rem; }
+    .pc-body { padding: 14px 14px 18px; }
+    .steps.n5, .steps.n8 { grid-template-columns: minmax(0, 1fr); }   /* 단계 카드를 한 줄에 하나씩 */
+    .skills .head { font-size: 1.125rem; }
+    .resume { font-size: 1.125rem; }
+  }
+  @media (max-width: 360px) {
+    .logo { font-size: .75rem; letter-spacing: .04em; }
+    .menu a { font-size: .625rem; letter-spacing: .04em; padding: 3px 3px; }
+    .hero-kicker { letter-spacing: .18em; }
+    .bgm-vol { display: none !important; }   /* 아주 좁은 화면에서는 볼륨 슬라이더 숨김 (ON/OFF 버튼은 유지) */
+  }
+
+  /* ---------- 폰 가로 모드(화면 높이가 낮을 때): 팝업을 좌우로 나눠 한 화면에 보이게 ---------- */
+  @media (max-height: 520px) and (orientation: landscape) {
+    .works-top { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+    .camera { width: 100%; }
+    .detail { width: auto; margin: 6px; }
+    .modal-body { padding: 44px 16px 18px; }
+    .viewfinder { min-height: 320px; padding: 48px 0; }
+  }
+
+  /* ---------- 스크롤 진행 바 (헤더 아래, 현재 위치를 보여줌) ---------- */
+  .header::after { content: ''; position: absolute; left: 0; bottom: 0; height: 4px; width: calc(var(--p, 0) * 100%); background: var(--accent); pointer-events: none; }
+
+  /* ---------- 스크롤 모션 강화 (동작 줄이기 설정이면 적용 안 됨) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    /* 필름 카드가 한 장씩 톡톡 튀어 올라옴 */
+    .js .category .pl-item { opacity: 0; transform: translateY(40px) scale(.92);
+      transition: opacity .35s ease, transform .5s cubic-bezier(.34, 1.4, .5, 1); }
+    .js .category.is-in .pl-item { opacity: 1; transform: none; }
+    .js .category.is-in .pl-item:nth-child(1) { transition-delay: .05s; }
+    .js .category.is-in .pl-item:nth-child(2) { transition-delay: .11s; }
+    .js .category.is-in .pl-item:nth-child(3) { transition-delay: .17s; }
+    .js .category.is-in .pl-item:nth-child(4) { transition-delay: .23s; }
+    .js .category.is-in .pl-item:nth-child(5) { transition-delay: .29s; }
+    .js .category.is-in .pl-item:nth-child(n+6) { transition-delay: .35s; }
+
+    /* ABOUT: 캐릭터는 왼쪽에서, 소개는 오른쪽에서 슬라이드 인 (모바일은 아래에서) */
+    .js .about-char, .js .about-skills { opacity: 0;
+      transition: opacity .9s ease .25s, translate 1.1s cubic-bezier(.16, 1, .3, 1) .25s; }
+    .js .about-char { translate: -56px 0; }
+    .js .about-skills { translate: 56px 0; }
+    @media (max-width: 820px) { .js .about-char, .js .about-skills { translate: 0 44px; } }
+    .js .about-body.is-in .about-char, .js .about-body.is-in .about-skills { opacity: 1; translate: 0 0; }
+
+    /* 인트로 배경 영상은 살짝 키워서 스크롤 시 천천히 따라 움직이게 */
+    .vf-video { scale: 1.15; will-change: translate; }
+    .vf-center, .spark { will-change: translate; }
+  }
+
+  /* ---------- 음악 켜기 안내 말풍선 (BGM 버튼 위) ---------- */
+  .bgm-tip { position: absolute; right: 0; bottom: calc(100% + 20px); padding: 9px 16px; background: var(--ink); color: var(--header-bg);
+    font-size: .9375rem; line-height: 1.4; white-space: nowrap; pointer-events: none;
+    opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease;
+    box-shadow: 0 -4px 0 0 var(--ink), 0 4px 0 0 var(--ink), -4px 0 0 0 var(--ink), 4px 0 0 0 var(--ink), 8px 8px 0 4px rgba(90, 79, 67, .28); }
+  .bgm-tip::after { content: ''; position: absolute; right: 38px; top: calc(100% + 4px); width: 16px; height: 12px; background: var(--ink);
+    clip-path: polygon(0 0, 100% 0, 100% 34%, 80% 34%, 80% 67%, 60% 67%, 60% 100%, 40% 100%, 40% 67%, 20% 67%, 20% 34%, 0 34%); }
+  .bgm-tip.show { opacity: 1; transform: none; }
+  @keyframes tip-bob { 50% { transform: translateY(-5px); } }
+  @media (prefers-reduced-motion: no-preference) { .bgm-tip.show { animation: tip-bob 1.4s steps(4) infinite; } }
+  @media (max-width: 820px) { .bgm-tip { bottom: calc(100% + 18px); padding: 7px 12px; font-size: .8125rem; max-width: calc(100vw - 28px); white-space: normal; text-align: center; } }
+</style>
 </head>
 <body>
-    <video src="video/wiggle.mp4" width="500px" controls></video>
-    <video src="video/2.mp4" width="500px" controls></video>
+
+<img class="bg-clouds" src="images/bg-clouds.png" alt="">
+
+<!-- ================= 헤더 ================= -->
+<div class="header">
+  <div class="wrap">
+    <a class="logo" href="#home">HAYOUNG SHIN</a>
+    <div class="menu">
+      <a href="#home">HOME</a>
+      <a href="#works">WORKS</a>
+      <a href="#about">ABOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HOME : 인트로 ================= -->
+<div class="page" id="home">
+  <span class="spark" style="left:5%; top:10%">✦</span>
+  <span class="spark" style="right:6%; top:16%; animation-delay:.8s">✦</span>
+  <span class="spark" style="left:12%; bottom:14%; animation-delay:1.4s">✦</span>
+  <span class="spark" style="right:10%; bottom:26%; animation-delay:2s">✦</span>
+
+  <div class="wrap">
+    <div class="viewfinder">
+      <div class="vf-bg" id="vf-bg">
+        <video class="vf-video" autoplay muted loop playsinline preload="auto">
+          <source src="videos/intro.mp4" type="video/mp4">
+        </video>
+      </div>
+      <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+      <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+
+      <div class="vf-top"><span class="rec">REC</span><span>720P · 30FPS</span></div>
+
+      <div class="vf-center">
+        <span class="hero-kicker">CONTENT MARKETER</span>
+        <h1 class="hero-title" aria-label="HAYOUNG SHIN">
+          <span class="typed-wrap"><span class="ghost" aria-hidden="true">HAYOUNG SHIN</span><span class="typed" id="typed" aria-hidden="true">HAYOUNG SHIN</span></span>
+        </h1>
+        <span class="hero-sub">콘텐츠로 사람과 브랜드를 연결합니다.</span>
+      </div>
+
+      <div class="vf-bottom"><span id="tc">00:00:00:00</span><span>AF · LOCKED</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= WORKS : 카메라 + 작품 목록 ================= -->
+<div class="page" id="works">
+  <span class="spark" style="left:4%; top:6%">✦</span>
+  <span class="spark" style="right:5%; top:30%; animation-delay:1s">✦</span>
+  <span class="spark" style="left:8%; top:60%; animation-delay:1.8s">✦</span>
+
+  <div class="wrap">
+
+    <!-- 영상 선택용 라디오. 번호(w숫자)는 아래 화면(s숫자), 설명(d숫자), 목록(t숫자)과 같아야 해요. w1 이 기본 재생 -->
+    <input type="radio" name="work" id="w1" onchange="pauseAllVideos()" checked>
+    <input type="radio" name="work" id="w2" onchange="pauseAllVideos()">
+    <!-- w3 은 비워둔 자리 (COMING SOON) -->
+    <input type="radio" name="work" id="w4" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w5" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w6" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w7" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w8" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w9" onchange="pauseAllVideos()">
+    <input type="radio" name="work" id="w10" onchange="pauseAllVideos()">
+
+    <div class="works-layout">
+
+      <!-- ===== 팝업: 카메라 플레이어(왼쪽) + 선택한 영상 설명(오른쪽) — 목록에서 영상을 누르면 열려요 ===== -->
+      <div class="works-modal" id="works-modal" role="dialog" aria-modal="true" aria-label="작품 보기">
+       <div class="backdrop"></div>
+       <div class="modal-panel">
+        <button type="button" class="close" aria-label="닫기">✕</button>
+        <div class="scroll-hint" id="scroll-hint" aria-hidden="true">SCROLL<i></i></div>
+        <div class="modal-body">
+      <div class="works-top">
+        <div class="camera">
+          <img class="frame" src="images/camera.png" alt="카메라">
+
+          <!-- 영상 1개당 screen 1개. 유튜브는 data-link 에 링크 붙여넣기 -->
+          <div class="screen s1"><video class="video" controls playsinline preload="none" poster="images/donghaeng.png"><source src="videos/donghaeng-ai.mp4" type="video/mp4"></video></div>
+          <div class="screen s2"><video class="video" controls playsinline preload="none" poster="images/alice.png"><source src="videos/alice.mp4" type="video/mp4"></video></div>
+          <div class="screen s4"><iframe class="video" data-link="https://youtu.be/t--rK1NXzBg?si=ygs3jioIQsRTA54z" title="돈쭐내러왔습니다2 24화 예고" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s5"><iframe class="video" data-link="https://youtu.be/9SgZFWVHX60?si=jhofWuiagWiHOMnF" title="돈쭐내러왔습니다2 22화 예고" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s6"><iframe class="video" data-link="https://youtu.be/c4JOeyLXX0w?si=53hOd6sw2x8bJrMf" title="돈쭐내러왔습니다2 19화 예고" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s7"><iframe class="video" data-link="https://youtu.be/iL3nkOaGj70?si=AqCk6rhpNy_9AwwW" title="돈쭐내러왔습니다2 16화 예고" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s8"><iframe class="video" data-link="https://youtu.be/koa7mtjo8Tg?si=18sXPwl2YPMpA2hK" title="European Things American Find Weird" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s9"><iframe class="video" data-link="https://youtu.be/-VgY9SpBBa8?si=mTppy_Wrq0FHgAUA" title="The words Scottish CAN'T pronounce?!" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+          <div class="screen s10"><iframe class="video" data-link="https://youtu.be/-Jjm4HyQBSk?si=MW5ayOcvyCzgJCjm" title="Weird things British DO" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+        </div>
+
+      <!-- 선택한 영상의 설명 (영상 번호와 같은 d숫자가 보임) -->
+      <div class="detail">
+        <div class="np-bar"><span class="playing">NOW PLAYING</span><span class="np-dots"></span></div>
+        <div class="d d1">
+          <span class="m-title">동행 가상 광고</span>
+          <span class="m-desc">"저도요!"라는 공감의 순간을 통해 취미가 맞는 사람들을 연결해 주는 동행의 서비스를 유쾌하게 표현한 AI 광고 영상입니다. <br>
+            *실제 광고가 아닙니다.</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <a class="m-link" href="images/donghaengproposal.pdf" target="_blank" rel="noopener">기획서</a>
+        </div>
+        <div class="d d2">
+          <span class="m-title">ALICE: <br> LOOKING THROUGH THE GLASS</span>
+          <span class="m-desc">원작동화 《앨리스》와 《거울 나라의 앨리스》를 모티프로, 시간과 거울을 따라 펼쳐지는 초현실적인 세계를 AI 영상으로 시각화한 모션아트필름입니다.</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, After Effects, GPT, Flow, Kling, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <a class="m-link" href="images/aliceproposal.pdf" target="_blank" rel="noopener">기획서</a>
+        </div>
+        <div class="d d4">
+          <span class="m-title">돈쭐내러왔습니다2 24화 예고</span>
+          <span class="m-desc"> 핵심 장면을 중심으로 구성하여 시청자의 관심과 본방송에 대한 기대감을 유도했습니다. <br>
+            ©IHQ/재믹스C&B 
+          </span>
+          <span class="m-meta"><b>ROLE</b>(조연출) 기획, 촬영, 편집 | 기여도: 편집 100% <br><b>TOOL</b><span class="tools">Final Cut</span><br><b>PERIOD</b>2주</span>
+        </div>
+        <div class="d d5">
+          <span class="m-title">돈쭐내러왔습니다2 22화 예고</span>
+          <span class="m-desc">흥미로운 장면과 빠른 전개를 활용하여 시청자의 관심과 본방송에 대한 기대감을 유도했습니다.<br>
+            ©IHQ/재믹스C&B 
+          </span>
+          <span class="m-meta"><b>ROLE</b>(조연출) 기획, 촬영, 편집 | 기여도: 편집 100% <br><b>TOOL</b><span class="tools">Final Cut</span><br><b>PERIOD</b>2주</span>
+        </div>
+        <div class="d d6">
+          <span class="m-title">돈쭐내러왔습니다2 19화 예고</span>
+          <span class="m-desc">출연진의 개성과 현장감을 강조하여 시청자의 관심과 본방송에 대한 기대감을 유도했습니다.<br>
+            ©IHQ/재믹스C&B 
+          </span>
+          <span class="m-meta"><b>ROLE</b>(조연출) 기획, 촬영, 편집 | 기여도: 편집 100% <br><b>TOOL</b><span class="tools">Final Cut</span><br><b>PERIOD</b>2주</span>
+        </div>
+        <div class="d d7">
+          <span class="m-title">돈쭐내러왔습니다2 16화 예고</span>
+          <span class="m-desc">출연진의 생생한 반응과 유쾌한 분위기를 담아 시청자의 관심을 유도하고 본방송에 대한 기대감을 높였습니다.<br>
+            ©IHQ/재믹스C&B </span>
+          <span class="m-meta"><b>ROLE</b>(조연출) 기획, 촬영, 편집 | 기여도: 편집 100% <br><b>TOOL</b><span class="tools">Final Cut</span><br><b>PERIOD</b>2주</span>
+        </div>
+        <div class="d d8">
+          <span class="m-title">European Things American Find Weird</span>
+          <span class="m-desc">유럽과 미국의 문화적 차이를 흥미로운 사례를 통해 소개하는 콘텐츠입니다. 일상 속 다양한 차이를 유쾌하게 풀어내며 시청자의 관심을 유도했습니다.<br>
+            ©WORLDFRIENDS</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 촬영보조 | 기여도: 기획 100% <br><b>TOOL</b><span class="tools">Premiere, PowerPoint</span><br><b>PERIOD</b>3일</span>
+        </div>
+        <div class="d d9">
+          <span class="m-title">The words Scottish CAN'T pronounce?!</span>
+          <span class="m-desc">스코틀랜드 사람들에게도 발음하기 쉽지 않은 단어들을 소개하는 콘텐츠입니다. 언어와 발음의 차이에서 비롯되는 재미있는 순간들을 통해 시청자의 흥미와 호기심을 유도했습니다.<br>
+            ©WORLDFRIENDS</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 촬영보조 | 기여도: 기획 100% <br><b>TOOL</b><span class="tools">Premiere, PowerPoint</span><br><b>PERIOD</b>3일</span>
+        </div>
+        <div class="d d10">
+          <span class="m-title">Weird things British DO</span>
+          <span class="m-desc">영국의 독특한 문화와 일상 속 흥미로운 행동들을 소개하는 콘텐츠입니다. 문화적 차이에서 비롯되는 재미있는 요소를 통해 시청자의 관심을 유도했습니다.<br>
+            ©WORLDFRIENDS</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 촬영보조 | 기여도: 기획 100% <br><b>TOOL</b><span class="tools">Premiere, PowerPoint</span><br><b>PERIOD</b>3일</span>
+        </div>
+      </div>
+    </div>
+
+        <!-- ===== 기획서 요약 카드 ===== -->
+        <div class="plan plan1">
+          <div class="plan-title">PLANNING SUMMARY</div>
+          <div class="plan-grid">
+            <div class="pcard">
+              <h4>OVERVIEW</h4>
+              <div class="pc-body">
+                좋아하는 취미가 있어도 함께할 사람이 없어 포기하는 순간에 주목했습니다. “와인 좋아하는 사람 없나?”라는 작은 질문에 곳곳에서 “저도요!”를 외치는 상황으로, 취미가 맞는 사람을 연결해 주는 서비스를 유쾌하게 표현했습니다.
+                <div class="pc-chips"><span>29초</span><span>16:9</span><span>일상 코미디 + AI 브랜드 광고</span></div>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>MESSAGE</h4>
+              <div class="pc-body">
+                <div class="pc-quote">“혼자선 못하는 좋은 경험들, 우리 동행할까요?”</div>
+                <div class="pc-sep"></div>
+                <span class="pc-line"><b>TARGET</b>친구를 찾고 싶은 20~30대 직장인</span>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>VISUAL</h4>
+              <div class="pc-body">
+                자연스러운 조명과 차분한 색감의 편안하고 세련된 분위기. 3D 애니메이션 스타일의 세미리얼 일러스트로, 인물 중심 미디엄숏에 와이드숏과 클로즈업을 조합했습니다.
+                <div class="swatches">
+                  <span class="sw" style="background:#F8F1E6" title="Cream Beige #F8F1E6"></span>
+                  <span class="sw" style="background:#B89C8A" title="Soft Brown #B89C8A"></span>
+                  <span class="sw" style="background:#8A6B8E" title="Soft Purple #8A6B8E"></span>
+                  <span class="sw" style="background:#5A3D67" title="Deep Purple #5A3D67"></span>
+                </div>
+              </div>
+            </div>
+            <div class="pcard wide">
+              <h4>STORY</h4>
+              <div class="pc-body">
+                <ol class="steps n5">
+                  <li><span class="no">01</span><span class="nm">"양식당"</span><span class="ds">와인 리스트에 눈이 반짝</span></li>
+                  <li><span class="no">02</span><span class="nm">"같이할 사람이 없다"</span><span class="ds">단체방을 보고 실망</span></li>
+                  <li><span class="no">03</span><span class="nm">"저요!"</span><span class="ds">사방에서 손을 들며 등장하는 동행인들</span></li>
+                  <li><span class="no">04</span><span class="nm">"동행"</span><span class="ds">모임 몽타주</span></li>
+                  <li><span class="no">05</span><span class="nm">"엔딩"</span><span class="ds">로고와 슬로건</span></li>
+                </ol>
+                <div class="pc-point"><b>POINT</b>“저도요!” 한마디로 공감, 반전, 서비스 가치까지 이어지는 짧고 명확한 서사</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan plan2">
+          <div class="plan-title">PLANNING SUMMARY</div>
+          <div class="plan-grid">
+            <div class="pcard">
+              <h4>OVERVIEW</h4>
+              <div class="pc-body">
+                루이스 캐럴의 원작 동화와 2016년 영화 《거울 나라의 앨리스》를 모티프로, 상징적인 사물과 초현실적인 공간의 변형을 통해 환상적인 세계관을 시각화한 모션아트필름입니다.
+                <div class="pc-chips"><span>50초</span><span>16:9</span><span>AI Motion Art Film</span></div>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>MESSAGE</h4>
+              <div class="pc-body">
+                <div class="pc-quote">“WHAT IF THE IMPOSSIBLE WAS REAL?”</div>
+                <div class="pc-sep"></div>
+                <span class="pc-line">“Curious”를 핵심 키워드로 호기심에서 시작된 앨리스의 여정을 표현하고, 마지막 질문으로 관객의 상상력을 자극합니다.</span>
+                <span class="pc-line" style="margin-top:10px"><b>TARGET</b>패션·뷰티·광고 업계 크리에이티브, 아트필름형 비주얼에 관심 있는 시청자</span>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>VISUAL</h4>
+              <div class="pc-body">
+                수채화 질감의 2D 디지털 일러스트를 기반으로 시계, 토끼, 카드, 체스, 장미 등 주요 오브젝트를 하나의 판타지 세계관으로 연결했습니다.
+                <div class="swatches">
+                  <span class="sw" style="background:#B8A7D9" title="Lavender Purple #B8A7D9"></span>
+                  <span class="sw" style="background:#D18CA1" title="Dusty Rose #D18CA1"></span>
+                  <span class="sw" style="background:#C9A25A" title="Mustard Gold #C9A25A"></span>
+                  <span class="sw" style="background:#EEE4CC" title="Cream Beige #EEE4CC"></span>
+                  <span class="sw" style="background:#7A9A8A" title="Sage Green #7A9A8A"></span>
+                  <span class="sw" style="background:#1A204D" title="Midnight Navy #1A204D"></span>
+                  <span class="sw" style="background:#2B2A2C" title="Charcoal #2B2A2C"></span>
+                </div>
+              </div>
+            </div>
+            <div class="pcard wide">
+              <h4>STORY</h4>
+              <div class="pc-body">
+                <ol class="steps n8">
+                  <li><span class="no">01</span><span class="nm">"White Rabbit"</span><span class="ds">달리는 토끼를 따라 이동</span></li>
+                  <li><span class="no">02</span><span class="nm">"Clock"</span><span class="ds">초침이 토끼 귀로 변형</span></li>
+                  <li><span class="no">03</span><span class="nm">"The Hole"</span><span class="ds">체크 패턴 터널로 낙하</span></li>
+                  <li><span class="no">04</span><span class="nm">"Potion &amp; Cake"</span><span class="ds">물약이 화면을 덮는다</span></li>
+                  <li><span class="no">05</span><span class="nm">"Door &amp; Keyhole"</span><span class="ds">황금 문, 열쇠구멍 통과</span></li>
+                  <li><span class="no">06</span><span class="nm">"Playing Card"</span><span class="ds">채셔캣의 장난</span></li>
+                  <li><span class="no">07</span><span class="nm">"Chess Board"</span><span class="ds">카드가 거대한 체스판으로 변형</span></li>
+                  <li><span class="no">08</span><span class="nm">"Loop"</span><span class="ds">회중시계로 귀환</span></li>
+                </ol>
+                <div class="pc-point"><b>POINT</b>시계, 토끼, 카드, 체스로 이어지는 오브젝트 전환과 처음으로 돌아오는 루프 구조</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+       </div>
+      </div>
+
+    <!-- ===== 아래: 카테고리별 가로 플레이리스트 (누르면 위 카메라에서 재생) ===== -->
+    <div class="lists">
+
+      <div class="category">
+        <div class="pixel-title">PROMOTION</div>
+        <div class="row">
+          <button type="button" class="arrow prev" aria-label="이전"></button>
+          <div class="cards">
+            <div class="pl-item">
+              <label class="film t1" for="w1"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/donghaeng.png" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w1">동행 가상 광고</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t2" for="w2"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/alice.png" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w2">ALICE: LOOKING THROUGH THE GLASS</label>
+            </div>
+            <!-- 새 영상 추가 자리 (w3): 영상을 추가할시 칸을 위 칸처럼 변경예정 -->
+            <div class="pl-item">
+              <div class="film soon"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><span class="soon-text">COMING SOON</span></span></div>
+              <span class="cap">NEW WORK</span>
+            </div>
+          </div>
+          <button type="button" class="arrow next" aria-label="다음"></button>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="pixel-title">BROADCASTING</div>
+        <div class="row">
+          <button type="button" class="arrow prev" aria-label="이전"></button>
+          <div class="cards">
+            <div class="pl-item">
+              <label class="film t4" for="w4"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb7.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w4">돈쭐내러왔습니다2 24화 예고</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t5" for="w5"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb8.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w5">돈쭐내러왔습니다2 22화 예고</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t6" for="w6"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb9.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w6">돈쭐내러왔습니다2 19화 예고</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t7" for="w7"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb9.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w7">돈쭐내러왔습니다2 16화 예고</label>
+            </div>
+          </div>
+          <button type="button" class="arrow next" aria-label="다음"></button>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="pixel-title">YOUTUBE</div>
+        <div class="row">
+          <button type="button" class="arrow prev" aria-label="이전"></button>
+          <div class="cards">
+            <div class="pl-item">
+              <label class="film t8" for="w8"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb6.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w8">European Things American Find Weird</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t9" for="w9"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb6.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w9">The words Scottish CAN'T pronounce?!</label>
+            </div>
+            <div class="pl-item">
+              <label class="film t10" for="w10"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/thumb6.jpg" alt=""><span class="hint">PLAY ▶</span></span></label>
+              <label class="cap" for="w10">Weird things British DO</label>
+            </div>
+          </div>
+          <button type="button" class="arrow next" aria-label="다음"></button>
+        </div>
+      </div>
+
+        <!-- ===== 더 많은 작업 보기 ===== -->
+        <a class="more-works" href="https://hayoung7129.wixsite.com/youngfilmis/work" target="_blank" rel="noopener">MORE WORKS →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="page" id="about">
+  <span class="spark" style="left:6%; top:14%">✦</span>
+  <span class="spark" style="right:8%; top:22%; animation-delay:1.2s">✦</span>
+
+  <div class="wrap">
+    <span class="intro">"콘텐츠로 사람과 브랜드를 연결하는 신하영입니다."</span>
+
+    <div class="about-body">
+    <img class="about-char" src="images/character.png" width="455" height="880" alt="카메라를 든 신하영 캐릭터">
+    <div class="about-skills">
+    <div style="margin-bottom:40px;">
+      <div class="skills">
+        <span class="head">WHAT I DO</span>
+        <span class="item">AI 광고 · 아트필름 기획 및 제작</span>
+        <span class="item">방송 예고편 제작</span>
+        <span class="item">유튜브 콘텐츠 기획 · 연출</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="skills">
+        <span class="head">CORE SKILL</span>
+        <span class="item">CONTENT PLANNING</span>
+        <span class="item">VIDEO EDITING</span>
+        <span class="item">AI CONTENT</span>
+        <span class="item logos"><span class="tools">Premiere, Final Cut, After Effects, Photoshop</span></span>
+      </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- 이력서 PDF -->
+    <a class="resume" href="resume.pdf" target="_blank" rel="noopener">RESUME</a>
+  </div>
+</div>
+
+<!-- ================= 푸터 ================= -->
+<div class="footer">
+  <div class="wrap">
+    <div class="contact">
+      EMAIL: <a id="email" href="mailto:hayoung7129@gmail.com">hayoung7129@gmail.com</a><br>
+      INSTA: <a id="insta" href="https://www.instagram.com/youngfilmis/" target="_blank" rel="noopener">@youngfilmis</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 배경음악 ================= -->
+<audio id="bgm" loop preload="none">
+  <source src="audio/bgm.mp3" type="audio/mpeg">
+  <source src="bgbgm.mp4" type="audio/mp4">
+</audio>
+<div class="bgm-box" id="bgm-box">
+  <!-- 음악 켜기 안내 말풍선: 문구는 아래 글자만 바꾸면 돼요 -->
+  <div class="bgm-tip" id="bgm-tip" aria-hidden="true">♪ BGM 버튼을 누르면 음악이 나옵니다!</div>
+  <div class="bgm-vol"><span class="bgm-vol-lbl">VOL</span><input type="range" class="bgm-vol-range" id="bgm-vol" min="0" max="100" step="5" value="50" aria-label="배경음악 볼륨"></div>
+  <button type="button" class="bgm-btn" id="bgm-btn" aria-pressed="false" aria-label="배경음악 켜기/끄기"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="bgm-txt">BGM OFF</span></button>
+</div>
+
+<script>
+    // 영상 정지 (mp4 + 유튜브)
+    function pauseAllVideos() {
+      document.querySelectorAll('.video').forEach(function (video) {
+        try {
+          if (video.tagName === 'VIDEO') {
+            video.pause();
+          } else if (video.contentWindow) {
+            video.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*');
+          }
+        } catch (e) {}
+      });
+    }
+
+    // 스크롤하면 콘텐츠가 아래에서 부드럽게 떠오르며 나타남
+    (function () {
+      const targets = document.querySelectorAll('.category, .more-works, #about .wrap > *, .footer .wrap');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+      function makeIO(margin) {
+        const o = new IntersectionObserver(function (entries) {
+          let n = 0;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.style.setProperty('--d', (n++ * 0.12) + 's');   // 동시에 보이는 것들은 순서대로
+            entry.target.classList.add('is-in');
+            o.unobserve(entry.target);                                  // 한 번만 재생
+          });
+        }, { threshold: 0, rootMargin: margin });
+        return o;
+      }
+      const io = makeIO('0px 0px -14% 0px');
+      const ioEnd = makeIO('0px');   // 페이지 맨 아래(푸터)는 여백 없이 감지: 끝까지 내려도 안 보이는 문제 방지
+      targets.forEach(function (el) { (el.closest('.footer') ? ioEnd : io).observe(el); });
+    })();
+
+
+    // 스크롤 연동: 진행 바 + 인트로·반짝이 패럴랙스
+    (function () {
+      const root = document.documentElement;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const home = document.getElementById('home');
+      const center = document.querySelector('.vf-center');
+      const video = document.querySelector('.vf-video');
+      const sparks = Array.from(document.querySelectorAll('.spark'));
+      const speeds = sparks.map(function (_, i) { return (i % 2 ? 1 : -1) * (0.06 + (i % 4) * 0.04); });
+      let ticking = false;
+
+      function update() {
+        ticking = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        root.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
+        if (reduce) return;
+        const p = Math.max(0, Math.min(1, window.scrollY / (home.offsetHeight || 1)));
+        if (center) { center.style.translate = '0 ' + (p * 70).toFixed(1) + 'px'; center.style.opacity = (1 - p * 1.15).toFixed(3); }
+        if (video) video.style.translate = '0 ' + (p * 36).toFixed(1) + 'px';
+        sparks.forEach(function (sp, i) {
+          const r = sp.parentElement.getBoundingClientRect();
+          if (r.bottom < -200 || r.top > window.innerHeight + 200) return;   // 화면 밖이면 계산 생략
+          const c = r.top + r.height / 2 - window.innerHeight / 2;
+          sp.style.translate = '0 ' + (-c * speeds[i]).toFixed(1) + 'px';
+        });
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // 스크롤 위치에 따라 메뉴 테두리 자동 이동
+    const menus = document.querySelectorAll('.menu a');
+    const spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          menus.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ['home', 'works', 'about'].forEach(function (id) { spy.observe(document.getElementById(id)); });
+
+    // 작품 팝업: 목록의 영상(썸네일/제목)을 누르면 카메라 + 설명 팝업이 열림
+    //  - 닫기: 오른쪽 위 ✕ / 바깥 어두운 곳 클릭 / ESC (닫을 때 영상은 자동 정지)
+    (function () {
+      const modal = document.getElementById('works-modal');
+      if (!modal) return;
+      const closeBtn = modal.querySelector('.close');
+      let lastTrigger = null;   // 키보드로 열었다면, 닫을 때 포커스를 이 썸네일로 되돌림
+      let openedByKey = false;  // 마우스 사용자는 포커스를 되돌리지 않음 (되돌리면 필름 흐름이 멈춘 채 남음)
+      const modalBody = modal.querySelector('.modal-body');
+      function resetModalScroll() { modalBody.scrollTop = 0; updateHint(); }
+      // 아래에 더 볼 내용이 있을 때만 SCROLL 표시를 보여줌 (맨 아래 근처에 오면 사라짐)
+      const hint = document.getElementById('scroll-hint');
+      function updateHint() {
+        if (!hint) return;
+        const more = modalBody.scrollHeight - modalBody.clientHeight - modalBody.scrollTop > 40;
+        hint.classList.toggle('show', more && modal.classList.contains('open'));
+      }
+      modalBody.addEventListener('scroll', updateHint, { passive: true });
+      window.addEventListener('resize', updateHint);
+      if (window.ResizeObserver) { const ro = new ResizeObserver(updateHint); ro.observe(modalBody); Array.from(modalBody.children).forEach(function (c) { ro.observe(c); }); }
+      document.querySelectorAll('input[name="work"]').forEach(function (r) { r.addEventListener('change', function () { requestAnimationFrame(updateHint); }); });
+      // 팝업이 열리고 닫힐 때 뒤 화면이 위로 튀지 않도록 스크롤 위치를 고정 (smooth 스크롤도 잠시 끔)
+      function keepScroll(fn) {
+        const y = window.scrollY, root = document.documentElement, prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        fn();
+        window.scrollTo(0, y);
+        requestAnimationFrame(function () { window.scrollTo(0, y); root.style.scrollBehavior = prev; });
+      }
+      function openModal() {
+        keepScroll(openModalNow);
+      }
+      function openModalNow() {
+        const gap = window.innerWidth - document.documentElement.clientWidth;   // 스크롤바 때문에 화면이 흔들리지 않게
+        if (gap > 0) document.body.style.paddingRight = gap + 'px';
+        document.body.classList.add('modal-open');
+        modal.classList.add('open');
+        resetModalScroll();                           // 이전에 내려둔 스크롤을 맨 위로 되돌림
+        requestAnimationFrame(resetModalScroll);      // 선택한 작품 내용으로 바뀐 직후에도 한 번 더
+        closeBtn.focus({ preventScroll: true });
+        if (window.bgmDuck) window.bgmDuck(true);    // 영상 팝업이 열리면 배경음악 잠시 멈춤
+      }
+      function closeModal() {
+        keepScroll(closeModalNow);
+      }
+      function closeModalNow() {
+        pauseAllVideos();
+        if (window.bgmDuck) window.bgmDuck(false);   // 팝업을 닫으면 배경음악 다시 재생
+        modal.classList.remove('open');
+        updateHint();
+        document.body.classList.remove('modal-open');
+        document.body.style.paddingRight = '';
+        if (openedByKey && lastTrigger && document.contains(lastTrigger)) { try { lastTrigger.focus({ preventScroll: true }); } catch (e) {} }
+        openedByKey = false;
+      }
+      document.addEventListener('click', function (e) {          // 흘러가는 필름은 복제본이라 문서 전체에서 감지
+        const label = e.target.closest('label.film, label.cap');
+        if (label && label.htmlFor && document.getElementById(label.htmlFor)) {
+          const item = label.closest('.pl-item');
+          lastTrigger = (item && item.querySelector('label.film')) || label;
+          openModal();
+        }
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.querySelector('.backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        // 키보드: 썸네일에 포커스가 있을 때 Enter / Space 로 열기
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('label.film[tabindex]')) {
+          e.preventDefault();
+          openedByKey = true;
+          e.target.click();
+        }
+      });
+    })();
+
+    // 유튜브 링크 → 재생 주소로 바꿔서 iframe 에 넣기 (watch?v= / youtu.be / shorts 링크 모두 가능)
+    function youtubeId(link) {
+      const m = (link || '').match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})/);
+      return m ? m[1] : '';
+    }
+    document.querySelectorAll('iframe[data-link]').forEach(function (frame) {
+      const id = youtubeId(frame.dataset.link);
+      if (id) frame.src = 'https://www.youtube.com/embed/' + id + '?enablejsapi=1&rel=0';
+    });
+
+    // 유튜브 썸네일 자동 표시 (직접 만든 썸네일을 쓰려면 iframe 에 data-thumb="own" 을 추가하세요)
+    function setThumb(img, id) {
+      img.src = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
+      img.onerror = function () {            // 고화질이 없는 영상은 기본 화질로 대체
+        img.onerror = null;
+        img.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+      };
+    }
+    document.querySelectorAll('.film[class*=" t"]').forEach(function (film) {
+      const num = film.className.match(/\bt(\d+)\b/)[1];
+      const img = film.querySelector('.inner img');
+      const frame = document.querySelector('.screen.s' + num + ' iframe[data-link]');
+      const id = frame ? youtubeId(frame.dataset.link) : '';
+      if (id && frame.dataset.thumb !== 'own') { img.dataset.yt = id; setThumb(img, id); }
+    });
+
+    // 키보드 접근성: 작품 썸네일에 Tab 으로 이동 → Enter / Space 로 열기
+    document.querySelectorAll('.pl-item').forEach(function (it) {
+      const film = it.querySelector('label.film');
+      const cap = it.querySelector('label.cap');
+      if (!film) return;
+      film.setAttribute('tabindex', '0');
+      film.setAttribute('role', 'button');
+      if (cap) film.setAttribute('aria-label', cap.textContent.trim() + ' 재생');
+    });
+
+    // Works 플레이리스트: 필름이 흘러가고, 좌우 화살표로 직접 넘길 수 있음
+    //  - 마우스를 올리거나 터치하는 동안 멈춤 / 화살표를 누르면 5초간 멈췄다가 다시 흐름
+    //  - 칸이 적어도 끊김 없이 이어지도록 같은 칸을 반복해서 채웁니다.
+    const FLOW_SPEED = 40;          // 자동으로 흐르는 속도 (px/초, 숫자가 클수록 빠름)
+    const FLOW_GAP = 14;            // 칸 사이 간격 (CSS 의 .track gap 과 같게)
+    const FLOW_PAUSE_AFTER_CLICK = 5000;   // 화살표를 누른 뒤 멈춰 있는 시간 (밀리초)
+    const flowRows = [];
+    document.querySelectorAll('.row').forEach(function (row) {
+      const cards = row.querySelector('.cards');
+      const prev = row.querySelector('.arrow.prev');
+      const next = row.querySelector('.arrow.next');
+      // '동작 줄이기' 설정이면 자동으로 흐르지 않고, 화살표로만 넘김
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        prev.addEventListener('click', function () { cards.scrollBy({ left: -cards.clientWidth, behavior: 'smooth' }); });
+        next.addEventListener('click', function () { cards.scrollBy({ left: cards.clientWidth, behavior: 'smooth' }); });
+        return;
+      }
+      const originals = Array.from(cards.children);
+      const track = document.createElement('div');
+      track.className = 'track';
+      let H = 0, step = 0, x = 0, anim = null;
+      let hovering = false, touching = false, focused = false, holdUntil = 0;
+
+      function fill(count) {
+        track.innerHTML = '';
+        for (let r = 0; r < count; r++) {
+          originals.forEach(function (node) {
+            const clone = node.cloneNode(true);
+            if (r > 0) {   // 반복용 복제본은 Tab 순서에서 제외
+              clone.setAttribute('aria-hidden', 'true');
+              clone.querySelectorAll('[tabindex]').forEach(function (el) { el.setAttribute('tabindex', '-1'); });
+            }
+            clone.querySelectorAll('img[data-yt]').forEach(function (img) { setThumb(img, img.dataset.yt); });
+            track.appendChild(clone);
+          });
+        }
+      }
+      function build() {
+        cards.classList.remove('flow');
+        cards.innerHTML = '';
+        cards.appendChild(track);
+        fill(1);
+        const unit = track.firstElementChild.offsetWidth + FLOW_GAP;   // 칸 하나 + 간격
+        const setW = originals.length * unit;                          // 칸 한 세트의 길이
+        const W = cards.clientWidth;
+        const repeat = Math.max(1, Math.ceil(W / setW));
+        fill(repeat * 4);                                              // 앞뒤로 넘겨도 비지 않도록 넉넉히
+        const rel = H ? x % H : 0;
+        H = repeat * setW;
+        step = Math.max(1, Math.floor(W / unit)) * unit;               // 화면에 보이는 칸 수만큼 넘김
+        x = H + rel;
+        anim = null;
+        cards.classList.add('flow');
+      }
+      function normalize() { while (x >= 2 * H) x -= H; while (x < H) x += H; }
+      function go(dir) {
+        if (!H) return;
+        if (anim) { x = anim.to; anim = null; }
+        normalize();
+        anim = { from: x, to: x + dir * step, t0: performance.now(), dur: 600 };
+        holdUntil = performance.now() + FLOW_PAUSE_AFTER_CLICK;
+      }
+      prev.addEventListener('click', function () { go(-1); });
+      next.addEventListener('click', function () { go(1); });
+      row.addEventListener('mouseenter', function () { hovering = true; });
+      row.addEventListener('mouseleave', function () { hovering = false; });
+      row.addEventListener('focusin', function () { focused = true; });
+      row.addEventListener('focusout', function () { focused = false; });
+      row.addEventListener('touchstart', function () { touching = true; }, { passive: true });
+      row.addEventListener('touchend', function () { touching = false; holdUntil = performance.now() + 3000; }, { passive: true });
+
+      flowRows.push(function (now, dt) {
+        if (!H) return;
+        if (anim) {
+          const t = Math.min(1, (now - anim.t0) / anim.dur);
+          x = anim.from + (anim.to - anim.from) * (1 - Math.pow(1 - t, 3));
+          if (t >= 1) { anim = null; }
+        } else {
+          if (!hovering && !touching && !focused && now > holdUntil) { x += FLOW_SPEED * dt; }
+          normalize();
+        }
+        track.style.transform = 'translateX(' + (-x) + 'px)';
+      });
+      build();
+      let timer;
+      window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(build, 250); });
+    });
+    let lastFrame = performance.now();
+    function flowLoop(now) {
+      const dt = Math.min(0.05, (now - lastFrame) / 1000);
+      lastFrame = now;
+      flowRows.forEach(function (fn) { fn(now, dt); });
+      requestAnimationFrame(flowLoop);
+    }
+    if (flowRows.length) requestAnimationFrame(flowLoop);
+
+     // TOOL 이름 → 로고 파일.
+  (function () {
+    var LOGOS = {
+      'photoshop':    'images/logos/photoshop.png',
+      'premiere':     'images/logos/premiere.png',
+      'aftereffects': 'images/logos/after.png',
+      'gpt':          'images/logos/gpt.png',
+      'flow':         'images/logos/flow.png',
+      'suno':         'images/logos/suno.png',
+      'elevenlabs':   'images/logos/elevenlabs.png',
+      'finalcut':     'images/logos/finalcut.png',
+      'powerpoint':   'images/logos/ppt.png',
+      'kling': 'images/logos/kling.png'
+    };
+    document.querySelectorAll('.tools').forEach(function (box) {
+      var names = box.textContent.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+      box.textContent = '';
+      names.forEach(function (name, idx) {
+        var src = LOGOS[name.toLowerCase().replace(/\s+/g, '')];
+        var chip;
+        if (src) {
+          chip = document.createElement('span');
+          chip.className = 'tool-logo';
+          chip.title = name;
+          var img = new Image();
+          img.alt = name; img.src = src;
+          img.onerror = function () { chip.replaceWith(document.createTextNode(name + (idx < names.length - 1 ? ', ' : ''))); };  // 이미지가 없으면 글자로
+          chip.appendChild(img);
+        } else {
+          chip = document.createTextNode(name + (idx < names.length - 1 ? ', ' : ''));
+        }
+        box.appendChild(chip);
+      });
+    });
+  })();
+
+    // 인트로: 이름이 한 글자씩 타자 치듯 나타났다가, 지워지고 다시 반복됨
+    (function () {
+      const el = document.getElementById('typed');
+      const full = el.textContent.trim();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const TYPE_MS  = 110;    // 한 글자 치는 속도
+      const ERASE_MS = 60;     // 한 글자 지우는 속도
+      const HOLD_MS  = 1800;   // 다 쓰고 나서 보여주는 시간
+      const PAUSE_MS = 500;    // 다 지우고 나서 쉬는 시간
+      el.textContent = '';
+      let i = 0;
+      function type() {
+        el.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(type, TYPE_MS);
+        else setTimeout(erase, HOLD_MS);
+      }
+      function erase() {
+        el.textContent = full.slice(0, --i);
+        if (i > 0) setTimeout(erase, ERASE_MS);
+        else setTimeout(type, PAUSE_MS);
+      }
+      setTimeout(type, 700);
+    })();
+
+    // 배경음악: 접속하면 자동 재생을 시도하고, 브라우저가 막으면 첫 클릭·터치·키 입력 때 시작
+    //  - 사용자가 직접 끄면(BGM OFF) 같은 방문 동안은 새로고침해도 켜지지 않음
+    //  - 영상 팝업이 열려 있는 동안, 다른 탭을 보는 동안에는 자동으로 멈췄다가 돌아오면 다시 재생
+    (function () {
+      const audio = document.getElementById('bgm');
+      const btn = document.getElementById('bgm-btn');
+      if (!audio || !btn) return;
+      const txt = btn.querySelector('.bgm-txt');
+      const VOL_CAP = 0.7;      // 볼륨 슬라이더를 끝까지 올렸을 때의 소리 크기 (0 ~ 1)
+      const VOL_DEFAULT = 50;   // 처음 시작할 때 슬라이더 위치 (0 ~ 100)
+      const FADE_MS = 600;      // 켜고 끌 때 소리가 부드럽게 변하는 시간
+      const slider = document.getElementById('bgm-vol');
+      const box = document.getElementById('bgm-box');
+
+      let level = VOL_DEFAULT;
+      try { const sv = parseInt(localStorage.getItem('bgmVol'), 10); if (sv >= 0 && sv <= 100) level = sv; } catch (e) {}
+      let maxVol = level / 100 * VOL_CAP;
+
+      // want: 켜져 있어야 하는 상태(기본 ON) / pending: 브라우저가 자동 재생을 막아 첫 동작을 기다리는 중
+      let want = true, pending = false, ducked = false, fadeTimer = null;
+      try { if (sessionStorage.getItem('bgmOff') === '1') want = false; } catch (e) {}
+
+      audio.volume = 0.5;
+      const canVol = Math.abs(audio.volume - 0.5) < 0.01;   // iOS Safari 는 JS 로 볼륨을 바꿀 수 없음
+      audio.volume = 0;
+      if (!canVol && box) box.classList.add('no-vol');
+
+      if (slider) {
+        slider.value = level;
+        slider.style.setProperty('--v', level + '%');
+        slider.addEventListener('input', function () {
+          level = parseInt(slider.value, 10);
+          maxVol = level / 100 * VOL_CAP;
+          slider.style.setProperty('--v', level + '%');
+          try { localStorage.setItem('bgmVol', String(level)); } catch (e) {}
+          if (want && !ducked) { clearInterval(fadeTimer); audio.volume = maxVol; }   // 움직이는 즉시 소리 크기 반영
+        });
+      }
+
+      function fadeTo(target, done) {
+        clearInterval(fadeTimer);
+        if (!canVol) { if (done) done(); return; }
+        const from = audio.volume, t0 = performance.now();
+        fadeTimer = setInterval(function () {
+          const t = Math.min(1, (performance.now() - t0) / FADE_MS);
+          audio.volume = from + (target - from) * t;
+          if (t >= 1) { clearInterval(fadeTimer); if (done) done(); }
+        }, 40);
+      }
+      function render() {
+        const on = want && !pending;
+        btn.classList.toggle('on', on);
+        if (box) box.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        txt.textContent = on ? 'BGM ON' : 'BGM OFF';
+      }
+      function noFile() { want = false; pending = false; render(); txt.textContent = 'NO FILE'; }
+
+      // 자동 재생이 막혔을 때: 첫 클릭 / 터치 / 키 입력에서 재생 시작
+      const GESTURES = ['click', 'keydown', 'touchend'];
+      function onGesture(e) {
+        if (e.target && e.target.closest && e.target.closest('#bgm-box')) return;   // BGM 버튼을 누른 경우는 버튼 동작에 맡김
+        unbindGesture();
+        if (want) sync();
+      }
+      function bindGesture() { GESTURES.forEach(function (g) { document.addEventListener(g, onGesture, true); }); }
+      function unbindGesture() { GESTURES.forEach(function (g) { document.removeEventListener(g, onGesture, true); }); }
+
+      function tryPlay() {
+        if (audio.paused && canVol) audio.volume = 0;
+        const p = audio.play();
+        if (p && p.then) {
+          p.then(function () {
+            if (pending) { pending = false; render(); }
+          }).catch(function (err) {
+            if (err && err.name === 'AbortError') return;          // 재생 직후 멈춘 경우(팝업 열림 등)
+            if (err && err.name === 'NotAllowedError') { pending = true; render(); /* bindGesture(); ← 화면 아무 곳이나 눌러도 켜지게 하려면 앞의 // 를 지우세요 */ }   // 자동 재생 차단
+            else noFile();
+          });
+        }
+        fadeTo(maxVol);
+      }
+      function sync() {
+        if (want && !ducked && !document.hidden) {
+          tryPlay();
+        } else if (!audio.paused) {
+          fadeTo(0, function () { audio.pause(); });
+        }
+      }
+
+      btn.addEventListener('click', function () {
+        if (pending) { pending = false; unbindGesture(); want = true; }   // 막혀서 기다리던 중이면 이 클릭으로 시작
+        else want = !want;
+        try { sessionStorage.setItem('bgmOff', want ? '0' : '1'); } catch (e) {}
+        render(); sync();
+      });
+      audio.addEventListener('playing', function () { btn.classList.add('live'); if (pending) { pending = false; render(); } });
+      audio.addEventListener('pause', function () { btn.classList.remove('live'); });
+      audio.addEventListener('error', noFile);
+      const lastSrc = audio.querySelector('source:last-of-type');   // <source> 의 오류는 마지막 것에서만 확인
+      if (lastSrc) lastSrc.addEventListener('error', noFile);
+      document.addEventListener('visibilitychange', sync);
+      window.bgmDuck = function (v) { ducked = v; sync(); };
+
+      render();
+      sync();   // 접속하자마자 자동 재생 시도
+    })();
+
+    // 음악 안내 말풍선: 자동 재생이 막혀 음악이 꺼져 있을 때만 잠깐 나타남 (한 번 보면 이번 방문 동안 다시 안 나옴)
+    (function () {
+      const audio = document.getElementById('bgm');
+      const tip = document.getElementById('bgm-tip');
+      const btn = document.getElementById('bgm-btn');
+      if (!audio || !tip || !btn) return;
+      try { if (sessionStorage.getItem('bgmOff') === '1' || sessionStorage.getItem('bgmTipSeen') === '1') return; } catch (e) {}
+      const SHOW_AFTER = 2500;   // 접속 후 안내가 나타나기까지 (밀리초)
+      const SHOW_FOR = 10000;    // 안내가 떠 있는 시간 (밀리초)
+      let t1, t2;
+      function hide() {
+        clearTimeout(t1); clearTimeout(t2);
+        tip.classList.remove('show');
+        try { sessionStorage.setItem('bgmTipSeen', '1'); } catch (e) {}
+      }
+      function show() {
+        if (!audio.paused) { hide(); return; }
+        tip.classList.add('show');
+        t2 = setTimeout(hide, SHOW_FOR);
+      }
+      t1 = setTimeout(show, SHOW_AFTER);
+      audio.addEventListener('playing', hide);
+      audio.addEventListener('error', hide);
+      btn.addEventListener('click', hide);
+    })();
+
+    // '동작 줄이기' 설정이면 인트로 배경 영상도 멈춤
+    (function () {
+      const v = document.querySelector('.vf-video');
+      if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        v.removeAttribute('autoplay');
+        v.pause();
+      }
+    })();
+
+    // 인트로: 카메라 타임코드가 올라감
+    (function () {
+      const tc = document.getElementById('tc');
+      const start = performance.now();
+      setInterval(function () {
+        const ms = performance.now() - start;
+        const f = Math.floor(ms / 1000 * 30) % 30;
+        const s = Math.floor(ms / 1000) % 60;
+        const m = Math.floor(ms / 60000) % 60;
+        const h = Math.floor(ms / 3600000);
+        tc.textContent = [h, m, s, f].map(function (n) { return String(n).padStart(2, '0'); }).join(':');
+      }, 33);
+    })();
+</script>
 </body>
 </html>
