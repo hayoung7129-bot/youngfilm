@@ -253,7 +253,7 @@
     box-shadow: 0 -3px 0 0 var(--ink), 0 3px 0 0 var(--ink), -3px 0 0 0 var(--ink), 3px 0 0 0 var(--ink); }
   .m-link:hover { background: var(--accent); box-shadow: 0 -3px 0 0 var(--accent), 0 3px 0 0 var(--accent), -3px 0 0 0 var(--accent), 3px 0 0 0 var(--accent); color: var(--header-bg); }
 
-  /* TOOL 로고: 이름 대신 로고 이미지로 바뀜 (images/logos/ 폴더). 이미지가 없으면 글자 그대로 보여요 */
+  /* TOOL 로고: 이름 대신 로고 이미지로 바뀜 (images/logo/ 폴더). 이미지가 없으면 글자 그대로 보여요 */
   .tool-logo { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: 0 8px 0 0; vertical-align: middle;
     background: var(--header-bg);
     box-shadow: 0 -3px 0 0 #5a4f43, 0 3px 0 0 #5a4f43, -3px 0 0 0 #5a4f43, 3px 0 0 0 #5a4f43; }
@@ -323,7 +323,9 @@
      새 작품에 카드를 달 때는 아래 두 줄에 #w숫자 / plan숫자 를 추가하세요 */
   .plan { display: none; margin-top: 38px; }
   #w1:checked ~ .works-layout .plan1,
-  #w2:checked ~ .works-layout .plan2 { display: block; }
+  #w2:checked ~ .works-layout .plan2,
+  #w3:checked ~ .works-layout .plan3,
+  #w11:checked ~ .works-layout .plan11 { display: block; }
   .plan-title { font-family: var(--font-pixel); font-size: 1.125rem; letter-spacing: .14em; margin-bottom: 20px; }
   .plan-title::after { content: ''; display: block; height: 4px; margin-top: 12px;
     background: repeating-linear-gradient(90deg, #5a4f43 0 4px, transparent 4px 8px); }
@@ -819,25 +821,27 @@
           <span class="m-desc">"저도요!"라는 공감의 순간을 통해 취미가 맞는 사람들을 연결해 주는 동행의 서비스를 유쾌하게 표현한 AI 광고 영상입니다. <br>
             *실제 광고가 아닙니다.</span>
           <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
-          <a class="m-link" href="images/donghaengproposal.pdf" target="_blank" rel="noopener">기획서</a>
+          <a class="m-link" href="images/proposal/donghaengproposal.pdf" target="_blank" rel="noopener">기획서</a>
         </div>
         <div class="d d2">
           <span class="m-title">ALICE: <br> LOOKING THROUGH THE GLASS</span>
           <span class="m-desc">원작동화 《앨리스》와 《거울 나라의 앨리스》를 모티프로, 시간과 거울을 따라 펼쳐지는 초현실적인 세계를 AI 영상으로 시각화한 모션아트필름입니다.</span>
           <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, After Effects, GPT, Flow, Kling, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
-          <a class="m-link" href="images/aliceproposal.pdf" target="_blank" rel="noopener">기획서</a>
+          <a class="m-link" href="images/proposal/aliceproposal.pdf" target="_blank" rel="noopener">기획서</a>
         </div>
         <div class="d d3">
-          <span class="m-title">금연 공익광고 ①</span>
-          <span class="m-desc">전자담배의 유해성을 전하는 AI 가상 금연 공익광고입니다. <br>
+          <span class="m-title">가상 금연 공익광고 EP.01</span>
+          <span class="m-desc">잠자는 숲속의 공주를 오마주해, 아내의 입에서 나는 담배 냄새에 뽀뽀를 포기하는 남편의 모습을 담은 AI 가상 금연 공익광고입니다. 간접흡연이 가족 사이를 멀어지게 한다는 메시지를 전합니다.<br>
             *실제 광고가 아닙니다.</span>
-          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Seedance, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <a class="m-link" href="images/proposal/smoking_propsal.pdf" target="_blank" rel="noopener">기획서</a>
         </div>
         <div class="d d11">
-          <span class="m-title">금연 공익광고 ②</span>
-          <span class="m-desc">전자담배의 유해성을 전하는 AI 가상 금연 공익광고입니다. <br>
+          <span class="m-title">가상 금연 공익광고 EP.02</span>
+          <span class="m-desc">백설공주를 오마주해, 딸의 눈동자에 비친 아빠가 마녀로 변하고 건네받은 사과가 썩어 폐 모양이 되는 순간을 담은 AI 가상 금연 공익광고입니다. 간접흡연을 가볍게 여기는 태도에 경각심을 전합니다.<br>
             *실제 광고가 아닙니다.</span>
-          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작, 편집 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <span class="m-meta"><b>ROLE</b>기획, 연출, 제작 | 기여도: 100% <br><b>TOOL</b><span class="tools">Photoshop, Premiere, GPT, Flow, Seedance, Suno, Eleven Labs</span><br><b>PERIOD</b>1개월</span>
+          <a class="m-link" href="images/proposal/smoking_propsal.pdf" target="_blank" rel="noopener">기획서</a>
         </div>
         <div class="d d4">
           <span class="m-title">돈쭐내러왔습니다2 24화 예고</span>
@@ -934,6 +938,98 @@
           </div>
         </div>
 
+        <div class="plan plan3">
+          <div class="plan-title">PLANNING SUMMARY</div>
+          <div class="plan-grid">
+            <div class="pcard">
+              <h4>OVERVIEW</h4>
+              <div class="pc-body">
+                잠자는 숲속의 공주를 현실의 신혼 부부 일상에 접목했습니다. 퇴근길에 담배를 피운 아내에게서 나는 냄새 때문에 뽀뽀를 포기하는 남편의 모습으로, 간접흡연이 가족 사이를 멀어지게 한다는 사실을 전합니다.
+                <div class="pc-chips"><span>33초</span><span>16:9</span><span>AI 실사풍 시네마틱 · 동화 오마주</span></div>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>MESSAGE</h4>
+              <div class="pc-body">
+                <div class="pc-quote">“담배는 가족과 멀어지게 합니다”</div>
+                <div class="pc-sep"></div>
+                <span class="pc-line"><b>ENDING</b>사랑을 멀어지게 한 건, 담배였습니다.</span>
+                <span class="pc-line" style="margin-top:10px"><b>TARGET</b>금연하지 못하는 흡연자들</span>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>VISUAL</h4>
+              <div class="pc-body">
+                시네마틱 리얼리즘으로 신혼 부부의 거실과 침실을 담았습니다. 낮은 조도의 푸른 달빛 아래 몽환적인 분위기에서 정적으로 이어지며, 무대조명 아래 잠든 아내가 동화 속 공주를 상징합니다.
+                <div class="swatches">
+                  <span class="sw" style="background:#1B2A4A" title="Deep Navy #1B2A4A"></span>
+                  <span class="sw" style="background:#6F8FBF" title="Moonlight Blue #6F8FBF"></span>
+                  <span class="sw" style="background:#C9CCD1" title="Smoke Gray #C9CCD1"></span>
+                </div>
+              </div>
+            </div>
+            <div class="pcard wide">
+              <h4>STORY</h4>
+              <div class="pc-body">
+                <ol class="steps n5">
+                  <li><span class="no">01</span><span class="nm">"퇴근길"</span><span class="ds">담배를 피우고 있는 아내</span></li>
+                  <li><span class="no">02</span><span class="nm">"거실"</span><span class="ds">노트북을 하던 남편이 아내를 반김</span></li>
+                  <li><span class="no">03</span><span class="nm">"침실"</span><span class="ds">방으로 들어간 아내를 따라 방문을 여는 남편</span></li>
+                  <li><span class="no">04</span><span class="nm">"무대조명"</span><span class="ds">검은 배경 라이트 아래 잠든 아내에게 다가가 뽀뽀하려는 남편</span></li>
+                  <li><span class="no">05</span><span class="nm">"엔딩"</span><span class="ds">담배 냄새에 손사래를 치며 방을 나가고, 카피 등장</span></li>
+                </ol>
+                <div class="pc-point"><b>POINT</b>아내 입에서 나는 담배 냄새로 뽀뽀를 포기하는 남편, 무음의 엔딩으로 메시지를 강조</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan plan11">
+          <div class="plan-title">PLANNING SUMMARY</div>
+          <div class="plan-grid">
+            <div class="pcard">
+              <h4>OVERVIEW</h4>
+              <div class="pc-body">
+                백설공주를 현실의 가족 마당에 접목했습니다. 딸의 눈동자에 비친 아빠가 마녀로 변하고 건네받은 사과가 썩어 폐 모양으로 변하는 순간으로, 간접흡연을 가볍게 여기는 태도에 경각심을 줍니다.
+                <div class="pc-chips"><span>34초</span><span>16:9</span><span>AI 실사풍 시네마틱 · 동화 오마주</span></div>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>MESSAGE</h4>
+              <div class="pc-body">
+                <div class="pc-quote">“담배는 가족과 멀어지게 합니다”</div>
+                <div class="pc-sep"></div>
+                <span class="pc-line"><b>ENDING</b>그 독사과를 받은 건, 아이입니다.</span>
+                <span class="pc-line" style="margin-top:10px"><b>TARGET</b>금연하지 못하는 흡연자들</span>
+              </div>
+            </div>
+            <div class="pcard">
+              <h4>VISUAL</h4>
+              <div class="pc-body">
+                시네마틱 리얼리즘으로 가족의 마당과 독사과 은유를 담았습니다. 따뜻한 아침빛이 사과가 썩는 순간 차갑게 전환되며 반전을 강조합니다.
+                <div class="swatches">
+                  <span class="sw" style="background:#B8312F" title="Apple Red #B8312F"></span>
+                  <span class="sw" style="background:#8FB2D9" title="Soft Blue #8FB2D9"></span>
+                  <span class="sw" style="background:#D9C7A7" title="Natural Beige #D9C7A7"></span>
+                </div>
+              </div>
+            </div>
+            <div class="pcard wide">
+              <h4>STORY</h4>
+              <div class="pc-body">
+                <ol class="steps n5">
+                  <li><span class="no">01</span><span class="nm">"마당"</span><span class="ds">"아빠 나 이거 따줘" 담배를 피우던 아빠가 아이의 부름에 응함</span></li>
+                  <li><span class="no">02</span><span class="nm">"사과"</span><span class="ds">아빠가 사과를 따고, 조명이 푸른빛으로 변함</span></li>
+                  <li><span class="no">03</span><span class="nm">"썩는 사과"</span><span class="ds">아이에게 건넨 사과가 썩어감</span></li>
+                  <li><span class="no">04</span><span class="nm">"눈동자"</span><span class="ds">눈동자에 비친 아빠가 마녀로 변함</span></li>
+                  <li><span class="no">05</span><span class="nm">"엔딩"</span><span class="ds">사과가 타오르며 폐 모양으로 변형, 카피 등장</span></li>
+                </ol>
+                <div class="pc-point"><b>POINT</b>딸의 눈동자에 비친 아빠가 마녀로 변하고 사과가 썩는 시각적 반전</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="plan plan2">
           <div class="plan-title">PLANNING SUMMARY</div>
           <div class="plan-grid">
@@ -1008,11 +1104,11 @@
             </div>
             <div class="pl-item">
               <label class="film t3" for="w3"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/smoking_1.png" alt=""><span class="hint">PLAY ▶</span></span></label>
-              <label class="cap" for="w3">금연 공익광고 ①</label>
+              <label class="cap" for="w3">가상 금연 공익광고 EP.01</label>
             </div>
             <div class="pl-item">
               <label class="film t11" for="w11"><img class="bg" src="images/film-frame.png" alt=""><span class="inner"><img src="images/smoking_2.png" alt=""><span class="hint">PLAY ▶</span></span></label>
-              <label class="cap" for="w11">금연 공익광고 ②</label>
+              <label class="cap" for="w11">가상 금연 공익광고 EP.02</label>
             </div>
           </div>
           <button type="button" class="arrow next" aria-label="다음"></button>
@@ -1429,16 +1525,17 @@
      // TOOL 이름 → 로고 파일.
   (function () {
     var LOGOS = {
-      'photoshop':    'images/logos/photoshop.png',
-      'premiere':     'images/logos/premiere.png',
-      'aftereffects': 'images/logos/after.png',
-      'gpt':          'images/logos/gpt.png',
-      'flow':         'images/logos/flow.png',
-      'suno':         'images/logos/suno.png',
-      'elevenlabs':   'images/logos/elevenlabs.png',
-      'finalcutpro':     'images/logos/finalcut.png',
-      'powerpoint':   'images/logos/ppt.png',
-      'kling': 'images/logos/kling.png'
+      'photoshop':    'images/logo/photoshop.png',
+      'premiere':     'images/logo/premiere.png',
+      'aftereffects': 'images/logo/after.png',
+      'gpt':          'images/logo/gpt.png',
+      'flow':         'images/logo/flow.png',
+      'suno':         'images/logo/suno.png',
+      'elevenlabs':   'images/logo/elevenlabs.png',
+      'finalcutpro':     'images/logo/finalcut.png',
+      'powerpoint':   'images/logo/ppt.png',
+      'kling': 'images/logo/kling.png',
+      'seedance': 'images/logo/seedance.png'
     };
     document.querySelectorAll('.tools').forEach(function (box) {
       var names = box.textContent.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
