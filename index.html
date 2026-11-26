@@ -253,7 +253,7 @@
     box-shadow: 0 -3px 0 0 var(--ink), 0 3px 0 0 var(--ink), -3px 0 0 0 var(--ink), 3px 0 0 0 var(--ink); }
   .m-link:hover { background: var(--accent); box-shadow: 0 -3px 0 0 var(--accent), 0 3px 0 0 var(--accent), -3px 0 0 0 var(--accent), 3px 0 0 0 var(--accent); color: var(--header-bg); }
 
-  /* TOOL 로고: 이름 대신 로고 이미지로 바뀜 (images/logo/ 폴더). 이미지가 없으면 글자 그대로 보여요 */
+  /* TOOL 로고: 이름 대신 로고 이미지로 바뀜 (images/logos/ 폴더). 이미지가 없으면 글자 그대로 보여요 */
   .tool-logo { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: 0 8px 0 0; vertical-align: middle;
     background: var(--header-bg);
     box-shadow: 0 -3px 0 0 #5a4f43, 0 3px 0 0 #5a4f43, -3px 0 0 0 #5a4f43, 3px 0 0 0 #5a4f43; }
@@ -1525,17 +1525,17 @@
      // TOOL 이름 → 로고 파일.
   (function () {
     var LOGOS = {
-      'photoshop':    'images/logo/photoshop.png',
-      'premiere':     'images/logo/premiere.png',
-      'aftereffects': 'images/logo/after.png',
-      'gpt':          'images/logo/gpt.png',
-      'flow':         'images/logo/flow.png',
-      'suno':         'images/logo/suno.png',
-      'elevenlabs':   'images/logo/elevenlabs.png',
-      'finalcutpro':     'images/logo/finalcut.png',
-      'powerpoint':   'images/logo/ppt.png',
-      'kling': 'images/logo/kling.png',
-      'seedance': 'images/logo/seedance.png'
+      'photoshop':    'images/logos/photoshop.png',
+      'premiere':     'images/logos/premiere.png',
+      'aftereffects': 'images/logos/after.png',
+      'gpt':          'images/logos/gpt.png',
+      'flow':         'images/logos/flow.png',
+      'suno':         'images/logos/suno.png',
+      'elevenlabs':   'images/logos/elevenlabs.png',
+      'finalcutpro':     'images/logos/finalcut.png',
+      'powerpoint':   'images/logos/ppt.png',
+      'kling': 'images/logos/kling.png',
+      'seedance': 'images/logos/seedance.png'
     };
     document.querySelectorAll('.tools').forEach(function (box) {
       var names = box.textContent.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
